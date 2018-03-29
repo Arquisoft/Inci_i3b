@@ -11,6 +11,8 @@ import uniovi.es.entities.Incidence;
 import uniovi.es.producers.KafkaProducer;
 import uniovi.es.repositories.IncidentsRepository;
 
+//jahfnlka
+
 @Service
 public class IncidentsService {
 
