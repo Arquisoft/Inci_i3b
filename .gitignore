@@ -22,7 +22,7 @@
 hs_err_pid*
 
 .project
-.settings
+.settings/
 InciDashboard_i3b/.classpath
 
 InciDashboard_i3b/.project
