@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>es.uniovi.asw</groupId>
-	<artifactId>participationSystem0</artifactId>
-	<name>participationSystem0</name>
+	<artifactId>inciManagement_i3b</artifactId>
+	<name>inciManagement_i3b</name>
 	<version>0.0.1</version>
 
 	<parent>
@@ -44,6 +44,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+		
+		<dependency>
+  			<groupId>com.google.code.gson</groupId>
+  			<artifactId>gson</artifactId>
+  			<version>2.8.2</version>
 		</dependency>
 
 
