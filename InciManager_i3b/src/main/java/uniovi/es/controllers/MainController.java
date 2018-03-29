@@ -68,7 +68,7 @@ public class MainController {
 			return "redirect:logIn";
 		}
 		// set user
-		message.setInci_name((String) session.getAttribute("user"));
+		message.setUsername((String) session.getAttribute("user"));
 		message.setUsertype((int) session.getAttribute("kind"));
 		message.setCustomFields((Map<String, String>) session.getAttribute("map"));
 		// set Coords
@@ -98,7 +98,7 @@ public class MainController {
 			return "redirect:logIn";
 		}
 		List<Incidence> l = incidentsService.getAgentIncidents((String) session.getAttribute("user"));
-		model.addAttribute("incidentList", l);
+		model.addAttribute("incidenceList", l);
 		return "listInci";
 	}
 

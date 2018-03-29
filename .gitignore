@@ -24,3 +24,12 @@ hs_err_pid*
 .project
 .settings
 InciDashboard_i3b/.classpath
+
+InciDashboard_i3b/.project
+InciDashboard_i3b/.settings
+Agents_i3b/.project
+Agents_i3b/.settings
+InciManager_i3b/.project
+InciManager_i3b/.settings
+Loader_i3b/.project
+Loader_i3b/.settings
