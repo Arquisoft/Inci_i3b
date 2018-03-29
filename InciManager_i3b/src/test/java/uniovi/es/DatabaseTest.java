@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import uniovi.es.entities.Message;
+import uniovi.es.entities.Incidence;
 import uniovi.es.repositories.IncidentsRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,7 +25,7 @@ public class DatabaseTest {
 	@Test
 	public void testDatabase() throws Exception {
 
-		Message m = new Message();
+		Incidence m = new Incidence();
 
 		m.setName("esteban");
 		m.setKind(2);
@@ -38,7 +38,7 @@ public class DatabaseTest {
 		m.setTags(s1);
 
 		incidentsRepository.save(m);
-		List<Message> messages = incidentsRepository.getIncidentsByAgentName("esteban");
+		List<Incidence> messages = incidentsRepository.getIncidentsByAgentName("esteban");
 
 		assertThat(messages.get(0).getName(), equalTo(m.getName()));
 		assertThat(messages.get(0).getKind(), equalTo(m.getKind()));

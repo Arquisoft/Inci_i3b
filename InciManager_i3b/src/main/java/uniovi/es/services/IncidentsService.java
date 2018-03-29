@@ -7,27 +7,28 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import uniovi.es.entities.Message;
+import uniovi.es.entities.Incidence;
 import uniovi.es.producers.KafkaProducer;
 import uniovi.es.repositories.IncidentsRepository;
 
 @Service
 public class IncidentsService {
 
+	private final static String topic = "incidences";
+	
 	@Autowired
 	private IncidentsRepository incidentsRepository;
 	@Autowired
 	private KafkaProducer kafkaProducer;
 
-	public void addIncident(String topic, Message incident) {
+	public void addIncident(Incidence incident) {
 		incidentsRepository.save(incident);
-		Gson gson = new Gson();
-		String kafkaMessage = gson.toJson(incident);
-		kafkaProducer.send(topic, kafkaMessage);
+		
+		kafkaProducer.send(topic, incident);
 	}
 
-	public List<Message> getAgentIncidents(String agentName) {
-		return incidentsRepository.getIncidentsByAgentName(agentName);
+	public List<Incidence> getAgentIncidents(String agentName) {
+		return incidentsRepository.getIncidentsByUsername(agentName);
 	}
 
 }

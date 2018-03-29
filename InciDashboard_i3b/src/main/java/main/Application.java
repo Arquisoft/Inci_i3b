@@ -34,9 +34,9 @@ public class Application implements CommandLineRunner {
     }
     @Override
     public void run(String... strings) throws Exception {
-//    	if(operatorRepository.count()==0)
-//    		addMockOperators();
-//    	inciRepository.deleteAll();
+    	if(operatorRepository.count()==0)
+    		addMockOperators();
+    	inciRepository.deleteAll();
 //        int i = 0;
 //        while (true) {
 //        	Incidence inci = IncidenceUtils.randomInci(i);

@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import uniovi.es.entities.Message;
+import uniovi.es.entities.Incidence;
 import uniovi.es.repositories.IncidentsRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -94,7 +94,7 @@ public class MainControllerTest {
 	@Test
     public void testGetList() throws Exception {
 		
-		Message m = new Message();
+		Incidence m = new Incidence();
 		
 		m.setName("Pepe");
 		m.setKind(2);

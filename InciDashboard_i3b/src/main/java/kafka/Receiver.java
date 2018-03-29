@@ -18,7 +18,7 @@ public class Receiver {
     private static final Logger LOG = LoggerFactory.getLogger(Receiver.class);
 
     
-    @KafkaListener(topics = "test")
+    @KafkaListener(topics = "incidences")
     public void listen(@Payload Incidence inci) {
         LOG.info("received message='{}'", inci.toString());
         System.out.println("New message received: \"" + inci.toString() + "\"");

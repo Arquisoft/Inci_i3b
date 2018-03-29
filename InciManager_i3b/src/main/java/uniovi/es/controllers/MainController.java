@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import uniovi.es.entities.Coordinates;
-import uniovi.es.entities.Message;
+import uniovi.es.entities.Incidence;
 import uniovi.es.entities.UserInfo;
 import uniovi.es.services.IncidentsService;
 
@@ -57,25 +57,25 @@ public class MainController {
 		if (session.getAttribute("user").equals("")) {
 			return "redirect:logIn";
 		}
-		model.addAttribute("message", new Message());
+		model.addAttribute("message", new Incidence());
 		session.setAttribute("map", new HashMap<String, String>());
 		return "createInci";
 	}
 
 	@RequestMapping(value = "/createIncidence", method = RequestMethod.POST)
-	public String createIncidencePost(HttpSession session, @Validated Message message) {
+	public String createIncidencePost(HttpSession session, @Validated Incidence message) {
 		if (session.getAttribute("user").equals("")) {
 			return "redirect:logIn";
 		}
 		// set user
-		message.setName((String) session.getAttribute("user"));
-		message.setKind((int) session.getAttribute("kind"));
+		message.setInci_name((String) session.getAttribute("user"));
+		message.setUsertype((int) session.getAttribute("kind"));
 		message.setCustomFields((Map<String, String>) session.getAttribute("map"));
 		// set Coords
 		Coordinates coor = new Coordinates();
-		message.setLocation("" + coor.getCoordinates());
+		message.setInci_location("" + coor.getCoordinates());
 
-		incidentsService.addIncident("exampleTopic", message);
+		incidentsService.addIncident(message);
 		session.setAttribute("map", new HashMap<String, String>());
 		return "redirect:listIncidences";
 	}
@@ -97,7 +97,7 @@ public class MainController {
 		if (session.getAttribute("user").equals("")) {
 			return "redirect:logIn";
 		}
-		List<Message> l = incidentsService.getAgentIncidents((String) session.getAttribute("user"));
+		List<Incidence> l = incidentsService.getAgentIncidents((String) session.getAttribute("user"));
 		model.addAttribute("incidentList", l);
 		return "listInci";
 	}

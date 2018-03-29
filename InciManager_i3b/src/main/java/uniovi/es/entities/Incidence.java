@@ -1,4 +1,4 @@
-package model;
+package uniovi.es.entities;
 
 import java.util.Map;
 
@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 
 import com.google.gson.Gson;
 
+import uniovi.es.services.IncidentsService;
 
 /**
  * Created by herminio on 27/2/17.
