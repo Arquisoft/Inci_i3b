@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import uniovi.es.entities.Coordinates;
 import uniovi.es.entities.Incidence;
 import uniovi.es.entities.UserInfo;
+import uniovi.es.services.AgentsService;
 import uniovi.es.services.IncidentsService;
 
 
@@ -28,6 +29,9 @@ public class MainController {
 
 	@Autowired
 	private IncidentsService incidentsService;
+	@Autowired
+	private AgentsService agentsService;
+	
 
 	@RequestMapping("/logIn")
 	public String log(HttpSession session) {
@@ -39,9 +43,15 @@ public class MainController {
 
 	@RequestMapping(value = "/logIn", method = RequestMethod.POST)
 	public String log(HttpSession session, @ModelAttribute UserInfo u, RedirectAttributes redirect) {
-		if (u.getKind() < 0 || u.getKind() > 3) {
+		/*if (u.getKind() < 0 || u.getKind() > 3) {
 			return "redirect:logIn";
-		} else {
+		}*/
+		if(agentsService.getAgent(u.getName(), u.getPassword() , u.getKind()+"") == null) 
+		{
+			return "redirect:logIn";
+		}
+		else
+		{
 			session.setAttribute("user", u.getName());
 			session.setAttribute("kind", u.getKind());
 			session.setAttribute("map", new HashMap<String, String>());
