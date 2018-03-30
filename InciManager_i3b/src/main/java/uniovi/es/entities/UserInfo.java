@@ -9,6 +9,15 @@ public class UserInfo {
 	private static final Logger LOG = LoggerFactory.getLogger(UserInfo.class);
 
 	public String name;
+	public String password;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	private int kind;
 
 	public void setName(String name) {
