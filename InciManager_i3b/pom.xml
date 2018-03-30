@@ -60,7 +60,7 @@
 
 		<dependency>
 			<groupId>es.uniovi.asw</groupId>
-			<artifactId>agents_i3b</artifactId>
+			<artifactId>Agents_i3b</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
