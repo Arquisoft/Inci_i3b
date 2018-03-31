@@ -8,10 +8,10 @@ import CucumberDefault.CucumberTest;
 import controller.ControllerTest;
 import model.AllModelTests;
 import selenium.AllSeleniumTests;
-import utils.IncidenceGeneratorTest;
+import utils.IncidenceUtilsTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({IncidenceGeneratorTest.class,AllSeleniumTests.class, ControllerTest.class,
+@SuiteClasses({IncidenceUtilsTest.class,AllSeleniumTests.class, ControllerTest.class,
 	AllModelTests.class, CucumberTest.class})
 public class AllTests {
 
