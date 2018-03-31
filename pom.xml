@@ -10,7 +10,7 @@
 
     <modules>
         <module>InciDashboard_i3b</module>
-        <module>InciManager_i3b</module>
+        <module>InciManagement_i3b</module>
         <module>Loader_i3b</module>
         <module>Agents_i3b</module>
 
