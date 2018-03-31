@@ -3,6 +3,7 @@ package uniovi.es;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.nio.charset.Charset;
@@ -60,7 +61,7 @@ public class APIControllerTest {
 
     @Test
     public void postTestUser() throws Exception {
-		  Agent user = new Agent("11111111A","123456","Pepe","mail@mail.com","Oviedo","Person","1");
+    	Agent user = new Agent("11111111A","123456","Pepe","pepe@gmail.com","Oviedo","Person","1");
 		  agentsService.deleteUser(user);
 		  agentsService.insertUser(user);
 		  try {
@@ -69,7 +70,12 @@ public class APIControllerTest {
 		          .contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 		                  MediaType.APPLICATION_JSON.getSubtype(),
 		                  Charset.forName("utf8"))))
-		          .andExpect(status().isOk());
+		          .andExpect(status().isOk())
+		          .andExpect(content().contentType("application/json;charset=UTF-8"))
+	              .andExpect(content().encoding("UTF-8"))
+	              .andExpect(content().json("{\"name\":\"Pepe\",\"location\":\"Oviedo\",\"email\":\"pepe@gmail.com\","
+	              		+ "\"id\":\"11111111A\",\"kind\":\"Person\",\"kindCode\":\"1\"}")
+	                );
 		  }catch(Exception e)
 		  {
 			  LOG.error(e.getMessage(), e);
