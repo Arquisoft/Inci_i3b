@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 
 /**
- * Created by herminio on 27/2/17.
+ * Created by Sergio Santano
  */
 public class Incidence {
 	
@@ -148,9 +148,19 @@ public class Incidence {
 
 	@Override 
 	public String toString() {
-		Gson gson = new Gson();
-		String kafkaMessage = gson.toJson(this);
-		return kafkaMessage;
+		StringBuilder sb = new StringBuilder();
+		sb.append('{');
+		sb.append(" \"id\":\"").append(inciId).append("\",");
+		sb.append(" \"username\":\"").append(username).append("\",");
+		sb.append(" \"usertype\":").append(usertype).append(",");
+		sb.append(" \"name\":\"").append(inci_name).append("\",");
+		sb.append(" \"description\":\"").append(inci_description).append("\",");
+		sb.append(" \"location\":\"").append(inci_location).append("\",");
+		sb.append(" \"info\":\"").append(inci_info).append("\",");
+		sb.append(" \"state\":").append(state).append(",");
+		sb.append(" \"operator\":\"").append("Operator").append("\"");
+		sb.append('}');
+		return sb.toString();
 		
 	}
 
