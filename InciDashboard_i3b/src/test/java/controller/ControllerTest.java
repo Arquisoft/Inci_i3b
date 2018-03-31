@@ -63,7 +63,8 @@ public class ControllerTest {
 	  
 	  @Test
 	  public void testManage() throws Exception {
-		Incidence inci = IncidenceUtils.randomInci(1);
+		Incidence inci = new Incidence();
+		inci.setInciId("id1");
       	sender.send(inci);
       	inciRepository.save(inci);
       	if(inciRepository.count()>0)
