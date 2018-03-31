@@ -80,11 +80,14 @@ public class MainController {
 		// set user
 		message.setUsername((String) session.getAttribute("user"));
 		message.setUsertype((int) session.getAttribute("kind"));
+		// set customfields
 		message.setCustomFields((Map<String, String>) session.getAttribute("map"));
 		// set Coords
 		Coordinates coor = new Coordinates();
 		message.setInci_location("" + coor.getCoordinates());
-
+		// set operator
+		message.setOperatorId(incidentsService.getRandomOperator());
+		
 		incidentsService.addIncident(message);
 		session.setAttribute("map", new HashMap<String, String>());
 		return "redirect:listIncidences";

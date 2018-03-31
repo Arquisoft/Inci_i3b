@@ -1,5 +1,8 @@
 package uniovi.es.entities;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.annotation.Id;
@@ -18,15 +21,82 @@ public class Incidence {
 	private String inci_description;
 	private String inci_name;
 	private String inci_location;
-	private int state;
-	private String[] tags;
+	private int state, expiration;
 	private String username;
 	private String inci_info;
 	private int usertype;
 	private Map<String, String> customFields;
+	private String operatorId, stateStr;
+	private List<String> comments, tags;
 	
 
+	public Incidence() {
+		tags = new ArrayList<String>();
+		comments = new ArrayList<String>();
+		customFields = new HashMap<>();
+	}
 	
+	
+	public int getExpiration() {
+		return expiration;
+	}
+
+
+
+	public void setExpiration(int expiration) {
+		this.expiration = expiration;
+	}
+
+
+
+	public String getOperatorId() {
+		return operatorId;
+	}
+
+
+
+	public void setOperatorId(String operatorId) {
+		this.operatorId = operatorId;
+	}
+
+
+
+	public String getStateStr() {
+		return stateStr;
+	}
+
+
+
+	public void setStateStr(int state) {
+		switch (state) {
+		case 0:
+			stateStr = "Open"; break;
+		case 1:
+			stateStr = "In Process"; break;
+		case 2:
+			stateStr = "Closed"; break;
+		case 3:
+			stateStr = "Cancelled"; break;
+		default:
+			stateStr = "";
+			
+		}
+	}
+
+
+
+	public List<String> getComments() {
+		return comments;
+	}
+
+
+
+	public void setComments(List<String> comments) {
+		this.comments = comments;
+	}
+
+
+
 	public String getInciId() {
 		return inciId;
 	}
@@ -83,17 +153,18 @@ public class Incidence {
 
 	public void setState(int state) {
 		this.state = state;
+		setStateStr(state);
 	}
 
 
 
-	public String[] getTags() {
+	public List<String> getTags() {
 		return tags;
 	}
 
 
 
-	public void setTags(String[] tags) {
+	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
 
@@ -145,10 +216,19 @@ public class Incidence {
 		this.customFields = customFields;
 	}
 
+	public String tagsToStr() {
+		String str = "";
+		for (String s:tags)
+			str+=s+",";
+		return str;
+	}
 
 
 	@Override 
 	public String toString() {
+		Gson gson = new Gson();
+		String fields = gson.toJson(customFields);
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append('{');
 		sb.append(" \"id\":\"").append(inciId).append("\",");
@@ -158,8 +238,11 @@ public class Incidence {
 		sb.append(" \"description\":\"").append(inci_description).append("\",");
 		sb.append(" \"location\":\"").append(inci_location).append("\",");
 		sb.append(" \"info\":\"").append(inci_info).append("\",");
-		sb.append(" \"state\":").append(state).append(",");
-		sb.append(" \"operator\":\"").append("Operator").append("\"");
+		sb.append(" \"state\":\"").append(stateStr).append("\",");
+		sb.append(" \"exiration\":").append(expiration).append(",");
+		sb.append(" \"operator\":\"").append(operatorId).append("\",");
+		sb.append(" \"tags\":\"").append(tagsToStr()).append("\",");
+		sb.append(" \"customfields\":").append(fields);
 		sb.append('}');
 		return sb.toString();
 		

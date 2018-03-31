@@ -100,8 +100,8 @@
 				</tr>
 				<tr th:each="inci : ${assignedIncis}">
 					<td th:text="${inci.getInciId()}"></td>
-					<td th:text="${inci.getInciName()}"></td>
-					<td th:text="${inci.getInciDescription()}"></td>
+					<td th:text="${inci.getInci_name()}"></td>
+					<td th:text="${inci.getInci_description()}"></td>
 					<td th:text="${inci.getStateStr()}"></td>
 					<td><a href="/manage" th:href="@{/manage/{inciId}(inciId=${inci.getInciId()})}">Manage</a></td>
 				</tr>
@@ -133,8 +133,8 @@
 				</tr>
 				<tr th:each="inci : ${incidences}">
 					<td th:text="${inci.getInciId()}"></td>
-					<td th:text="${inci.getInciName()}"></td>
-					<td th:text="${inci.getInciDescription()}"></td>
+					<td th:text="${inci.getInci_name()}"></td>
+					<td th:text="${inci.getInci_description()}"></td>
 					<td th:text="${inci.getUsername()}"></td>
 					<td th:text="${inci.getUsertype()}"></td>
 					<td th:text="${inci.getStateStr()}"></td>
