@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.google.gson.Gson;
+
+import utils.IncidenceUtils;
 
 
 /**
@@ -35,6 +38,16 @@ public class Incidence {
 		customFields = new HashMap<>();
 	}
 	
+	@JsonIgnore
+	public String getComment() {
+		String comment = "";
+		for (String s: comments) {
+			comment+="\n";
+			comment+=s;
+		}
+		return comment;
+			
+	}
 	
 	public int getExpiration() {
 		return expiration;
@@ -61,7 +74,7 @@ public class Incidence {
 
 
 	public String getStateStr() {
-		return stateStr;
+		return IncidenceUtils.getStateString(state);
 	}
 
 
@@ -237,7 +250,7 @@ public class Incidence {
 		sb.append(" \"description\":\"").append(inci_description).append("\",");
 		sb.append(" \"location\":\"").append(inci_location).append("\",");
 		sb.append(" \"info\":\"").append(inci_info).append("\",");
-		sb.append(" \"state\":\"").append(stateStr).append("\",");
+		sb.append(" \"state\":\"").append(getStateStr()).append("\",");
 		sb.append(" \"exiration\":").append(expiration).append(",");
 		sb.append(" \"operator\":\"").append(operatorId).append("\",");
 		sb.append(" \"tags\":\"").append(tagsToStr()).append("\",");

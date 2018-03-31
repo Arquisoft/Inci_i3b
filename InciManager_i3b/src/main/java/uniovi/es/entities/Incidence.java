@@ -238,7 +238,7 @@ public class Incidence {
 		sb.append(" \"description\":\"").append(inci_description).append("\",");
 		sb.append(" \"location\":\"").append(inci_location).append("\",");
 		sb.append(" \"info\":\"").append(inci_info).append("\",");
-		sb.append(" \"state\":\"").append(stateStr).append("\",");
+		sb.append(" \"state\":").append(state).append(",");
 		sb.append(" \"exiration\":").append(expiration).append(",");
 		sb.append(" \"operator\":\"").append(operatorId).append("\",");
 		sb.append(" \"tags\":\"").append(tagsToStr()).append("\",");
