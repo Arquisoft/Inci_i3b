@@ -1,6 +1,5 @@
 package uniovi.es.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,7 +13,6 @@ import uniovi.es.entities.Agent;
 import uniovi.es.services.AgentsService;
 import uniovi.es.utils.AgentJSON;
 import uniovi.es.utils.AgentLogin;
-
 
 @RestController
 public class APIController {
