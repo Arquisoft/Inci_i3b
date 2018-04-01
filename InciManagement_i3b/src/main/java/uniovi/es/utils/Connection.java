@@ -9,10 +9,14 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import com.google.gson.Gson;
 
 public class Connection {
-	
+
 	private static String agentsURL = "http://localhost:8085/checkAgent";
-	
-	public static boolean isValidLogin(AgentLogin agentLogin) throws Exception {
+
+	public enum Response {
+		VALID_AGENT, NOT_VALID_AGENT, OTHER
+	}
+
+	public static Response checkAgent(AgentLogin agentLogin) throws Exception {
 		Gson gson = new Gson();
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		HttpPost request = new HttpPost(agentsURL);
@@ -20,7 +24,13 @@ public class Connection {
 		request.addHeader("content-type", "application/json");
 		request.setEntity(params);
 		HttpResponse response = httpClient.execute(request);
-		return response.getStatusLine().getStatusCode() == 200;
+		if (response.getStatusLine().getStatusCode() == 200) {
+			return Response.VALID_AGENT;
+		} else if (response.getStatusLine().getStatusCode() == 404) {
+			return Response.NOT_VALID_AGENT;
+		} else {
+			return Response.OTHER;
+		}
 
 	}
 }

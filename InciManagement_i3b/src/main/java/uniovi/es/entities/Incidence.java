@@ -9,13 +9,8 @@ import org.springframework.data.annotation.Id;
 
 import com.google.gson.Gson;
 
-import uniovi.es.services.IncidentsService;
-
-/**
- * Created by herminio on 27/2/17.
- */
 public class Incidence {
-	
+
 	@Id
 	private String inciId;
 	private String inci_description;
@@ -28,189 +23,137 @@ public class Incidence {
 	private Map<String, String> customFields;
 	private String operatorId, stateStr;
 	private List<String> comments, tags;
-	
 
 	public Incidence() {
 		tags = new ArrayList<String>();
 		comments = new ArrayList<String>();
 		customFields = new HashMap<>();
 	}
-	
-	
+
 	public int getExpiration() {
 		return expiration;
 	}
-
-
 
 	public void setExpiration(int expiration) {
 		this.expiration = expiration;
 	}
 
-
-
 	public String getOperatorId() {
 		return operatorId;
 	}
-
-
 
 	public void setOperatorId(String operatorId) {
 		this.operatorId = operatorId;
 	}
 
-
-
 	public String getStateStr() {
 		return stateStr;
 	}
 
-
-
 	public void setStateStr(int state) {
 		switch (state) {
 		case 0:
-			stateStr = "Open"; break;
+			stateStr = "Open";
+			break;
 		case 1:
-			stateStr = "In Process"; break;
+			stateStr = "In Process";
+			break;
 		case 2:
-			stateStr = "Closed"; break;
+			stateStr = "Closed";
+			break;
 		case 3:
-			stateStr = "Cancelled"; break;
+			stateStr = "Cancelled";
+			break;
 		default:
 			stateStr = "";
-			
+
 		}
 	}
-
-
 
 	public List<String> getComments() {
 		return comments;
 	}
 
-
-
 	public void setComments(List<String> comments) {
 		this.comments = comments;
 	}
-
-
 
 	public String getInciId() {
 		return inciId;
 	}
 
-
-
 	public void setInciId(String inciId) {
 		this.inciId = inciId;
 	}
-
-
 
 	public String getInci_description() {
 		return inci_description;
 	}
 
-
-
 	public void setInci_description(String inci_description) {
 		this.inci_description = inci_description;
 	}
-
-
 
 	public String getInci_name() {
 		return inci_name;
 	}
 
-
-
 	public void setInci_name(String inci_name) {
 		this.inci_name = inci_name;
 	}
-
-
 
 	public String getInci_location() {
 		return inci_location;
 	}
 
-
-
 	public void setInci_location(String inci_location) {
 		this.inci_location = inci_location;
 	}
 
-
-
 	public int getState() {
 		return state;
 	}
-
-
 
 	public void setState(int state) {
 		this.state = state;
 		setStateStr(state);
 	}
 
-
-
 	public List<String> getTags() {
 		return tags;
 	}
-
-
 
 	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
 
-
-
 	public String getUsername() {
 		return username;
 	}
-
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
-
 	public String getInci_info() {
 		return inci_info;
 	}
-
-
 
 	public void setInci_info(String inci_info) {
 		this.inci_info = inci_info;
 	}
 
-
-
 	public int getUsertype() {
 		return usertype;
 	}
-
-
 
 	public void setUsertype(int usertype) {
 		this.usertype = usertype;
 	}
 
-
-
 	public Map<String, String> getCustomFields() {
 		return customFields;
 	}
-
-
 
 	public void setCustomFields(Map<String, String> customFields) {
 		this.customFields = customFields;
@@ -218,17 +161,16 @@ public class Incidence {
 
 	public String tagsToStr() {
 		String str = "";
-		for (String s:tags)
-			str+=s+",";
+		for (String s : tags)
+			str += s + ",";
 		return str;
 	}
 
-
-	@Override 
+	@Override
 	public String toString() {
 		Gson gson = new Gson();
 		String fields = gson.toJson(customFields);
-		
+
 		StringBuilder sb = new StringBuilder();
 		sb.append('{');
 		sb.append(" \"id\":\"").append(inciId).append("\",");
@@ -245,7 +187,7 @@ public class Incidence {
 		sb.append(" \"customfields\":").append(fields);
 		sb.append('}');
 		return sb.toString();
-		
+
 	}
 
 }

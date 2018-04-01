@@ -28,7 +28,10 @@
 				</div>
 			</div>
 			<div th:if="${errorDetails}" class="alert alert-danger">
-				<strong>Error:</strong> Invalid agent details.
+				<strong>Error:</strong> Invalid login details.
+			</div>
+			<div th:if="${errorConnection}" class="alert alert-danger">
+				<strong>Error:</strong> Some error in the connection with Agents module has ocurred.
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
