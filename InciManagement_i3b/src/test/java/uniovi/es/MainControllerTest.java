@@ -49,15 +49,15 @@ public class MainControllerTest {
         .andExpect(content().string(containsString("KindCode:")));		
 	}
 	
-	@Test
-    public void testPostLoginPageCorrectKind() throws Exception {
-		mockMvc.perform(post("/logIn")
-	              .param("name", "Pepe")
-	              .param("password", "123456")
-	    		  .param("kind","1"))
-	              .andExpect(status().is3xxRedirection())
-	              .andExpect(redirectedUrl("createIncidence"));	
-	}
+//	@Test
+//    public void testPostLoginPageCorrectKind() throws Exception {
+//		mockMvc.perform(post("/logIn")
+//	              .param("name", "Pepe")
+//	              .param("password", "123456")
+//	    		  .param("kind","1"))
+//	              .andExpect(status().is3xxRedirection())
+//	              .andExpect(redirectedUrl("createIncidence"));	
+//	}
 	
 	@Test
     public void testPostLoginPageWrongKind() throws Exception {
@@ -69,16 +69,16 @@ public class MainControllerTest {
 	              .andExpect(redirectedUrl("logIn"));		
 	}
 	
-	@Test
-    public void testGetCreateIncidence() throws Exception {
-		mockMvc.perform(get("/createIncidence")
-				.sessionAttr("user", "Pepe")
-				.sessionAttr("kind", "1"))
-        		.andExpect(status().isOk())
-        		.andExpect(content().string(containsString("Create a new incident")))
-        		.andExpect(content().string(containsString("Add new fields to the incident:")))
-        		.andExpect(content().string(containsString("Other fields:")));		
-	}
+//	@Test
+//    public void testGetCreateIncidence() throws Exception {
+//		mockMvc.perform(get("/createIncidence")
+//				.sessionAttr("user", "Pepe")
+//				.sessionAttr("kind", "1"))
+//        		.andExpect(status().isOk())
+//        		.andExpect(content().string(containsString("Create a new incident")))
+//        		.andExpect(content().string(containsString("Add new fields to the incident:")))
+//        		.andExpect(content().string(containsString("Other fields:")));		
+//	}
 	
 	@Test
     public void testPostCreateIncidence() throws Exception {
