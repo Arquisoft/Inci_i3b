@@ -1,11 +1,18 @@
 package uniovi.es.controllers;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
 import uniovi.es.entities.Coordinates;
 import uniovi.es.entities.Incidence;
-import uniovi.es.entities.UserInfo;
+import uniovi.es.utils.AgentLogin;
 import uniovi.es.services.AgentsService;
 import uniovi.es.services.IncidentsService;
 
@@ -32,6 +41,8 @@ public class MainController {
 	@Autowired
 	private AgentsService agentsService;
 	
+	private String agentsURL = "http://localhost:8085/checkAgent";
+	
 
 	@RequestMapping("/logIn")
 	public String log(HttpSession session) {
@@ -42,24 +53,34 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/logIn", method = RequestMethod.POST)
-	public String log(HttpSession session, @ModelAttribute UserInfo u, RedirectAttributes redirect) {
+	public String log(HttpSession session, @ModelAttribute AgentLogin u, RedirectAttributes redirect) {
 		/*if (u.getKind() < 0 || u.getKind() > 3) {
 			return "redirect:logIn";
 		}*/
-		if(agentsService.getAgent(u.getName(), u.getPassword() , u.getKind()+"") == null) 
-		{
-			return "redirect:logIn";
+		
+		Gson gson = new Gson();
+		HttpClient httpClient = HttpClientBuilder.create().build();
+		try {
+			HttpPost request = new HttpPost(agentsURL);
+			StringEntity params = new StringEntity(gson.toJson(u));
+			request.addHeader("content-type", "application/json");
+		    request.setEntity(params);
+		    HttpResponse response = httpClient.execute(request);
+		    if(response.getStatusLine().getStatusCode() == 200) {
+		    	session.setAttribute("user", u.getLogin());
+				session.setAttribute("kind", u.getKindCode());
+				session.setAttribute("map", new HashMap<String, String>());
+				redirect.addFlashAttribute("user", u);
+				redirect.addFlashAttribute("name", u.getLogin());
+				redirect.addFlashAttribute("kind", u.getKindCode());
+				return "redirect:createIncidence";
+		    }
+		    	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		else
-		{
-			session.setAttribute("user", u.getName());
-			session.setAttribute("kind", u.getKind());
-			session.setAttribute("map", new HashMap<String, String>());
-			redirect.addFlashAttribute("user", u);
-			redirect.addFlashAttribute("name", u.getName());
-			redirect.addFlashAttribute("kind", u.getKind());
-			return "redirect:createIncidence";
-		}
+		return "redirect:logIn";
 	}
 	
 	@RequestMapping("/createIncidence")
@@ -79,7 +100,7 @@ public class MainController {
 		}
 		// set user
 		message.setUsername((String) session.getAttribute("user"));
-		message.setUsertype((int) session.getAttribute("kind"));
+		message.setUsertype(Integer.valueOf((String) session.getAttribute("kind")));
 		// set customfields
 		message.setCustomFields((Map<String, String>) session.getAttribute("map"));
 		// set Coords
