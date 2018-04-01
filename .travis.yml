@@ -28,4 +28,4 @@ script:
 - cd ../InciDashboard_i3b && mvn test
 - nohup bash -c "mvn spring-boot:run &"
 - sleep 100  # give spring some time to start
-- cd ../InciManager_i3b && mvn test
+- cd ../InciManagement_i3b && mvn test
