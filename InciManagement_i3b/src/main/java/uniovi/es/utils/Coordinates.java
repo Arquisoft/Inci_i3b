@@ -25,7 +25,7 @@ public class Coordinates {
 	public String getCoordinates()
 	{
 		DecimalFormat df = new DecimalFormat("#.####");  
-		return df.format(getLatitud()) + "," + df.format(getLongitud());
+		return df.format(getLatitud()) + " || " + df.format(getLongitud());
 	}
 
 }
