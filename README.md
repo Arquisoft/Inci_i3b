@@ -16,6 +16,6 @@ In this repository you will find the fourth modules.
 # Authors
 * [Jorge García Marín (UO245241)](https://github.com/JorgeGarciaMarin)
 * [Sergio Santano Álvarez (UO244858)](https://github.com/sergiosantano)
-* Adrián de Miguel Palacio (UO251235)
-* Alfredo Fuentes Martín (UO244522)
-* Víctor Repiso Menéndez (UO244815)
+* [Adrián de Miguel Palacio (UO251235)](https://github.com/admipa97)
+* [Alfredo Fuentes Martín (UO244522)](https://github.com/alfredofuentes9)
+* [Víctor Repiso Menéndez (UO244815)](https://github.com/Victorreme)
