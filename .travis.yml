@@ -27,5 +27,5 @@ script:
 - cd Agents_i3b && mvn test
 - cd ../InciDashboard_i3b && mvn test
 - nohup bash -c "mvn spring-boot:run &"
-- sleep 100  # give spring some time to start
+- sleep 10  # give spring some time to start
 - cd ../InciManagement_i3b && mvn test
