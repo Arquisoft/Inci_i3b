@@ -25,63 +25,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
-import uniovi.es.entities.Coordinates;
 import uniovi.es.entities.Incidence;
-import uniovi.es.utils.AgentLogin;
-import uniovi.es.services.AgentsService;
 import uniovi.es.services.IncidentsService;
+import uniovi.es.utils.AgentLogin;
+import uniovi.es.utils.Connection;
+import uniovi.es.utils.Coordinates;
 
 
 
 @Controller
-public class MainController {
+public class IncidenceController {
+
 
 	@Autowired
 	private IncidentsService incidentsService;
-	@Autowired
-	private AgentsService agentsService;
-	
-	private String agentsURL = "http://localhost:8085/checkAgent";
-	
-
-	@RequestMapping("/logIn")
-	public String log(HttpSession session) {
-		session.setAttribute("user", "");
-		session.setAttribute("kind", "");
-		session.setAttribute("map", "");
-		return "logIn";
-	}
-
-	@RequestMapping(value = "/logIn", method = RequestMethod.POST)
-	public String log(HttpSession session, @ModelAttribute AgentLogin u, RedirectAttributes redirect) {
-		/*if (u.getKind() < 0 || u.getKind() > 3) {
-			return "redirect:logIn";
-		}*/
-		
-		Gson gson = new Gson();
-		HttpClient httpClient = HttpClientBuilder.create().build();
-		try {
-			HttpPost request = new HttpPost(agentsURL);
-			StringEntity params = new StringEntity(gson.toJson(u));
-			request.addHeader("content-type", "application/json");
-		    request.setEntity(params);
-		    HttpResponse response = httpClient.execute(request);
-		    if(response.getStatusLine().getStatusCode() == 200) {
-		    	session.setAttribute("user", u.getLogin());
-				session.setAttribute("kind", u.getKindCode());
-				session.setAttribute("map", new HashMap<String, String>());
-				redirect.addFlashAttribute("user", u);
-				redirect.addFlashAttribute("name", u.getLogin());
-				redirect.addFlashAttribute("kind", u.getKindCode());
-				return "redirect:createIncidence";
-		    }
-		    	
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "redirect:logIn";
-	}
 	
 	@RequestMapping("/createIncidence")
 	public String createIncidenceGet(HttpSession session, Model model) {

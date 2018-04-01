@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
 
     @RequestMapping("/")
-    public ModelAndView landing() {
-        return new ModelAndView("redirect:/checkAgentInfo");
+    public String landing() {
+        return "redirect:/checkAgentInfo";
     }
 
 }
