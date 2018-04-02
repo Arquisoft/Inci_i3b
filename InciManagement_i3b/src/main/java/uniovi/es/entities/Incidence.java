@@ -21,7 +21,7 @@ public class Incidence {
 	private String inci_info;
 	private int usertype;
 	private Map<String, String> customFields;
-	private String operatorId, stateStr;
+	private String operatorId;
 	private List<String> comments, tags;
 
 	public Incidence() {
@@ -47,26 +47,17 @@ public class Incidence {
 	}
 
 	public String getStateStr() {
-		return stateStr;
-	}
-
-	public void setStateStr(int state) {
 		switch (state) {
 		case 0:
-			stateStr = "Open";
-			break;
+			return "Open";
 		case 1:
-			stateStr = "In Process";
-			break;
+			return "In Process";
 		case 2:
-			stateStr = "Closed";
-			break;
+			return"Closed";
 		case 3:
-			stateStr = "Cancelled";
-			break;
+			return "Cancelled";
 		default:
-			stateStr = "";
-
+			return "";
 		}
 	}
 
@@ -116,7 +107,6 @@ public class Incidence {
 
 	public void setState(int state) {
 		this.state = state;
-		setStateStr(state);
 	}
 
 	public List<String> getTags() {
