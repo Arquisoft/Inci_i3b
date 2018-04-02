@@ -5,6 +5,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.springframework.http.HttpStatus;
 
 import com.google.gson.Gson;
 
@@ -24,9 +25,9 @@ public class Connection {
 		request.addHeader("content-type", "application/json");
 		request.setEntity(params);
 		HttpResponse response = httpClient.execute(request);
-		if (response.getStatusLine().getStatusCode() == 200) {
+		if (response.getStatusLine().getStatusCode() == HttpStatus.OK.value()) {
 			return Response.VALID_AGENT;
-		} else if (response.getStatusLine().getStatusCode() == 404) {
+		} else if (response.getStatusLine().getStatusCode() == HttpStatus.NOT_FOUND.value()) {
 			return Response.NOT_VALID_AGENT;
 		} else {
 			return Response.OTHER;

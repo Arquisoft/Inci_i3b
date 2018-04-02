@@ -13,14 +13,14 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import uniovi.es.entities.Incidence;
-import uniovi.es.repositories.IncidentsRepository;
+import uniovi.es.repositories.IncidencesRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class DatabaseTest {
 
 	@Autowired
-	private IncidentsRepository incidentsRepository;
+	private IncidencesRepository incidentsRepository;
 
 	@Test
 	public void testDatabase() throws Exception {

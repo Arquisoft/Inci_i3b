@@ -15,15 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import uniovi.es.entities.Incidence;
-import uniovi.es.services.IncidentsService;
+import uniovi.es.services.IncidencesService;
 import uniovi.es.utils.Coordinates;
 
 @Controller
 public class IncidenceController {
 
-
 	@Autowired
-	private IncidentsService incidentsService;
+	private IncidencesService incidentsService;
 	
 	@RequestMapping("/createIncidence")
 	public String createIncidenceGet(HttpSession session, Model model) {

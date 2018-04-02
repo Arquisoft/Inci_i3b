@@ -9,17 +9,16 @@ import org.springframework.stereotype.Service;
 import uniovi.es.entities.Incidence;
 import uniovi.es.entities.Operator;
 import uniovi.es.producers.KafkaProducer;
-import uniovi.es.repositories.IncidentsRepository;
+import uniovi.es.repositories.IncidencesRepository;
 import uniovi.es.repositories.OperatorRepository;
 
-
 @Service
-public class IncidentsService {
+public class IncidencesService {
 
 	private final static String topic = "incidences";
 	
 	@Autowired
-	private IncidentsRepository incidentsRepository;
+	private IncidencesRepository incidentsRepository;
 	@Autowired
 	private OperatorRepository operatorRepository;
 	@Autowired

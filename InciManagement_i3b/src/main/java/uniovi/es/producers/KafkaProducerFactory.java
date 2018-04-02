@@ -14,9 +14,6 @@ import uniovi.es.entities.Incidence;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by herminio on 26/12/16.
- */
 @Configuration
 @EnableKafka
 public class KafkaProducerFactory {

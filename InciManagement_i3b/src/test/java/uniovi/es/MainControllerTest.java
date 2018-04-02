@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import uniovi.es.entities.Incidence;
-import uniovi.es.repositories.IncidentsRepository;
+import uniovi.es.repositories.IncidencesRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
@@ -30,7 +30,7 @@ public class MainControllerTest {
 	private MockMvc mockMvc;
 	
 	@Autowired
-	private IncidentsRepository incidentsRepository;
+	private IncidencesRepository incidentsRepository;
 
     @Autowired
     private WebApplicationContext context;
