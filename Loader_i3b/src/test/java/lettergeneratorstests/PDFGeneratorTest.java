@@ -15,9 +15,9 @@ public class PDFGeneratorTest {
 	@Test
 	public void testGeneratePDF() {
 		PDFLetterGenerator pdfg = new PDFLetterGenerator();
-		PersonAgent a = new PersonAgent("Sergio", "43,-5", "sergiosantano96@gmail.com", "71681354Z", 1);
+		PersonAgent a = new PersonAgent("Sergio", "43,-5", "sergiosantano96@gmail.com", "71681354Z", "1");
 		pdfg.generatePersonalLetter(a);
-		File f = new File(a.getIdentifier() + ".pdf");
+		File f = new File(a.getId() + ".pdf");
 		assertTrue(f.exists());
 		Files.delete(f);
 

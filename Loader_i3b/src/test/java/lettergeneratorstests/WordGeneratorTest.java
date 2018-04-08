@@ -15,9 +15,9 @@ public class WordGeneratorTest {
 	@Test
 	public void test() {
 		WordLetterGenerator wordg = new WordLetterGenerator();
-		PersonAgent a = new PersonAgent("Sergio", "43,-5", "sergiosantano96@gmail.com", "71681354Z", 1);
+		PersonAgent a = new PersonAgent("Sergio", "43,-5", "sergiosantano96@gmail.com", "71681354Z", "1");
 		wordg.generatePersonalLetter(a);
-		File f = new File(a.getIdentifier() + ".docx");
+		File f = new File(a.getId() + ".docx");
 		assertTrue(f.exists());
 		Files.delete(f);
 		

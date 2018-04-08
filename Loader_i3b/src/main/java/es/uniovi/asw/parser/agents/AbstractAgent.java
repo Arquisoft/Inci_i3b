@@ -9,19 +9,31 @@ public abstract class AbstractAgent {
 	protected String name;
 	protected String location;
 	protected String email;	
-	protected String identifier;
-	protected int kind;
+	protected String id;
+	protected String kindCode;
+	protected String kind;
 	protected String password;
 	
-	public AbstractAgent(String name, String location, String email, String identifier, int kind) {
+	public AbstractAgent(String name, String location, String email, String identifier, String kind) {
 		super();
 		this.name = name;
 		this.location = location;
 		this.email = email;
-		this.identifier = identifier;
-		this.kind = kind;
+		this.id = identifier;
+		this.kindCode = String.valueOf(kind);
 	}
 	
+	
+	public String getKindCode() {
+		return kindCode;
+	}
+
+
+	public void setKindCode(String kindCode) {
+		this.kindCode = kindCode;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -40,16 +52,16 @@ public abstract class AbstractAgent {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getIdentifier() {
-		return identifier;
+	public String getId() {
+		return id;
 	}
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+	public void setId(String identifier) {
+		this.id = identifier;
 	}
-	public int getKind() {
+	public String getKind() {
 		return kind;
 	}
-	public void setKind(int kind) {
+	public void setKind(String kind) {
 		this.kind = kind;
 	}
 
@@ -64,7 +76,7 @@ public abstract class AbstractAgent {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((identifier == null) ? 0 : identifier.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -77,10 +89,10 @@ public abstract class AbstractAgent {
 		if (getClass() != obj.getClass())
 			return false;
 		AbstractAgent other = (AbstractAgent) obj;
-		if (identifier == null) {
-			if (other.identifier != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!identifier.equals(other.identifier))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

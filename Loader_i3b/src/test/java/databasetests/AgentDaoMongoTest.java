@@ -37,11 +37,11 @@ public class AgentDaoMongoTest {
 
 	@Before
 	public void insertCitizen() {
-		dummy = new PersonAgent("a", "45,-1", "prueba@email.com", "12345678A", 1);
-		dummy1 = new EntityAgent("b", "45,-1", "prueba@email.com", "12345678B", 2);
-		dummy2 = new SensorAgent("c", "45,-1", "prueba@email.com", "12345678C", 3);
-		dummy3 = new GeneralAgent("c", "45,-1", "prueba@email.com", "12345678D", 4);
-		dummy4 = new PersonAgent("c", "", "prueba@email.com", "12345678D", 1);
+		dummy = new PersonAgent("a", "45,-1", "prueba@email.com", "12345678A", "1");
+		dummy1 = new EntityAgent("b", "45,-1", "prueba@email.com", "12345678B", "2");
+		dummy2 = new SensorAgent("c", "45,-1", "prueba@email.com", "12345678C", "3");
+		dummy3 = new GeneralAgent("c", "45,-1", "prueba@email.com", "12345678D", "4");
+		dummy4 = new PersonAgent("c", "", "prueba@email.com", "12345678D", "1");
 		
 		SingletonParser.getInstance().getDefaultExcelReadList().parseMaster("src/test/resources/masterTest.csv");
 	}
@@ -158,7 +158,7 @@ public class AgentDaoMongoTest {
 		assertEquals(agents.size(), 1);
 		
 		//We test if after removing it from the database we can add it		
-		dao.remove(dummy.getIdentifier());
+		dao.remove(dummy.getId());
 		
 		agents = dao.findAll();
 		

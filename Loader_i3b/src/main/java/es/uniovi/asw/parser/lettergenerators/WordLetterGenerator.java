@@ -26,7 +26,7 @@ public class WordLetterGenerator implements LetterGenerator {
 		// Write the Document in file system
 		FileOutputStream out;
 		try {
-			out = new FileOutputStream(new File(c.getIdentifier()+".docx"));
+			out = new FileOutputStream(new File(c.getId()+".docx"));
 			XWPFParagraph paragraph = document.createParagraph();
 			XWPFRun runNames = paragraph.createRun();
 			

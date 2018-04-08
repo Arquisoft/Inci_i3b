@@ -10,12 +10,16 @@ import es.uniovi.asw.parser.SingletonParser;
  */
 public class GeneralAgent extends AbstractAgent {
 
-	public GeneralAgent(String name, String location, String email, String identifier, int kind) {
+	public GeneralAgent(String name, String location, String email, String identifier, String kind) {
 		super(name, location, email, identifier, kind);
+		setKind("General");
+
 	}
 
 	public GeneralAgent(Object[] data) {
-		super((String)data[0],(String)data[1],(String)data[2],(String) data[3], (Integer)data[4]);	
+		super((String)data[0],(String)data[1],(String)data[2],(String) data[3],  String.valueOf(data[4]));	
+		setKind("General");
+
 	}
 
 	public String toString() {
@@ -24,7 +28,7 @@ public class GeneralAgent extends AbstractAgent {
 		return kind + " Agent [Name=" + this.name
 				+ ", location=" + this.location
 				+ ", email=" + this.email
-				+ ", identifier=" + this.identifier
+				+ ", identifier=" + this.id
 				+"]";
 	}
 }

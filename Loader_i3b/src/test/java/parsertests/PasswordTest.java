@@ -16,7 +16,7 @@ public class PasswordTest {
 
 	@Test
 	public void testNotNull() {
-		PersonAgent c = new PersonAgent("Santi", "Samuel Sanchez", "xd@xd.com", "id5", 1);
+		PersonAgent c = new PersonAgent("Santi", "Samuel Sanchez", "xd@xd.com", "id5", "1");
 		Set<AbstractAgent> census = new HashSet<AbstractAgent>();
 		census.add(c);
 		PasswordGenerator.createPasswords(census);

@@ -21,7 +21,7 @@ public class PDFLetterGenerator implements LetterGenerator {
 		try {
 
 			PdfWriter.getInstance(document,
-					new FileOutputStream(new File(c.getIdentifier()+".pdf")));
+					new FileOutputStream(new File(c.getId()+".pdf")));
 
 			// open
 			document.open();
@@ -52,7 +52,7 @@ public class PDFLetterGenerator implements LetterGenerator {
 			// close
 			document.close();
 
-			System.out.println(c.getIdentifier() +"letter sent.");
+			System.out.println(c.getId() +"letter sent.");
 
 		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();

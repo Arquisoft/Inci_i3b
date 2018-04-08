@@ -57,7 +57,7 @@ public class AgentDaoImplMongo implements AgentDao {
 		this.db = mongo.getDB(DATABASE);
 		this.users = db.getCollection(COLLECTION);
 
-		users.createIndex(new BasicDBObject("identifier", 1), new BasicDBObject(
+		users.createIndex(new BasicDBObject("id", 1), new BasicDBObject(
 				"unique", true));
 	}
 
@@ -79,7 +79,7 @@ public class AgentDaoImplMongo implements AgentDao {
 		this.db = mongo.getDB(database);
 		this.users = db.getCollection(collection);
 
-		users.createIndex(new BasicDBObject("identifier", 1), new BasicDBObject(
+		users.createIndex(new BasicDBObject("id", 1), new BasicDBObject(
 				"unique", true));
 	}
 
@@ -96,12 +96,13 @@ public class AgentDaoImplMongo implements AgentDao {
 	public boolean insert(AbstractAgent a) {
 		//Puede que el problema esté en ese basic object
 		BasicDBObject document = new BasicDBObject();
-		document.put("name", a.getName());
-		document.put("location", a.getLocation());
-		document.put("email", a.getEmail());
-		document.put("identifier", a.getIdentifier());
-		document.put("kind", a.getKind());
+		document.put("id", a.getId());
 		document.put("password", a.getPassword());
+		document.put("name", a.getName());
+		document.put("email", a.getEmail());
+		document.put("location", a.getLocation());
+		document.put("kind", a.getKind());
+		document.put("kindCode", a.getKindCode());
 		try {
 			users.insert(document);
 			reporter.logDatabaseInsertion(a);
@@ -127,7 +128,7 @@ public class AgentDaoImplMongo implements AgentDao {
 	@Override
 	public void remove(String ID) {
 		BasicDBObject document = new BasicDBObject();
-		document.put("identifier", ID);
+		document.put("id", ID);
 		users.remove(document);
 	}
 
@@ -143,13 +144,13 @@ public class AgentDaoImplMongo implements AgentDao {
 	@Override
 	public AbstractAgent findById(String ID) {
 		BasicDBObject whereQuery = new BasicDBObject();
-		whereQuery.put("identifier", ID);
+		whereQuery.put("id", ID);
 		DBCursor cursor = users.find(whereQuery);
 		AbstractAgent a = null;
 		while (cursor.hasNext()) {
 			DBObject user = cursor.next();
 			a = createAgentByKind((String) user.get("name"), (String) user.get("location"), (String) user.get("email"), 
-						(String) user.get("identifier"), (int) user.get("kind"));
+						(String) user.get("id"),(String) user.get("kindCode"));
 		}
 		return a;
 	}
@@ -169,7 +170,7 @@ public class AgentDaoImplMongo implements AgentDao {
 		while (cursor.hasNext()) {
 			DBObject user = cursor.next();
 			AbstractAgent a = createAgentByKind((String) user.get("name"), (String) user.get("location"), (String) user.get("email"), 
-					(String) user.get("identifier"), (int) user.get("kind"));
+					(String) user.get("id"), (String)user.get("kindCode"));
 			allAgents.add(a);
 		}
 
@@ -201,20 +202,21 @@ public class AgentDaoImplMongo implements AgentDao {
 	 * Create an Agent depending on its kind
 	 * 
 	 */
-	private AbstractAgent createAgentByKind(String name, String location, String email, String identifier, int kind) {
+	private AbstractAgent createAgentByKind(String name, String location, String email, String identifier, String kindCode) {
 		AbstractAgent a = null;
+		int kind = Integer.valueOf(kindCode);
 		switch (kind) {
 		case 1:
-			a = new PersonAgent(name, location, email, identifier, kind);
+			a = new PersonAgent(name, location, email, identifier, kindCode);
 			break;
 		case 2:
-			a = new EntityAgent(name, location, email, identifier, kind);
+			a = new EntityAgent(name, location, email, identifier, kindCode);
 			break;
 		case 3: 
-			a = new SensorAgent(name, location, email, identifier, kind);
+			a = new SensorAgent(name, location, email, identifier, kindCode);
 			break;
 		default:
-			a = new GeneralAgent(name, location, email, identifier, kind);
+			a = new GeneralAgent(name, location, email, identifier, kindCode);
 		}
 		return a;
 	}

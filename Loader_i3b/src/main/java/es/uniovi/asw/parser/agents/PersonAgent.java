@@ -7,19 +7,23 @@ package es.uniovi.asw.parser.agents;
  */
 public class PersonAgent extends AbstractAgent {
 
-	public PersonAgent(String name, String location, String email, String identifier, int kind) {
+	public PersonAgent(String name, String location, String email, String identifier, String kind) {
 		super(name, location, email, identifier, kind);
+		setKind("Person");
+
 	}
 
 	public PersonAgent(Object[] data) {
-		super((String)data[0],(String)data[1],(String)data[2],(String) data[3], (Integer)data[4]);	
+		super((String)data[0],(String)data[1],(String)data[2],(String) data[3], String.valueOf(data[4]));	
+		setKind("Person");
+
 	}
 
 	public String toString() {
 		return "Person Agent [Name=" + this.name
 				+ ", location=" + this.location
 				+ ", email=" + this.email
-				+ ", identifier=" + this.identifier
+				+ ", identifier=" + this.id
 				+"]";
 	}
 }

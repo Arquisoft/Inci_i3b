@@ -17,10 +17,10 @@ public class ConsoleLetterGenerator implements LetterGenerator{
 		sb.append("Subject: Login data\n");
 		sb.append("Mr/Mrs "+ c.getName() +",\n\n");
 		sb.append("Your login data has been generated:\n");
-		sb.append("\tUsername: "+c.getIdentifier()+"\n");
+		sb.append("\tUsername: "+c.getId()+"\n");
 		sb.append("\tPassword: "+c.getPassword()+"\n");
 		System.out.println(sb.toString());
-		System.out.println(c.getIdentifier() +" letter sent.");
+		System.out.println(c.getId() +" letter sent.");
 	}
 
 }

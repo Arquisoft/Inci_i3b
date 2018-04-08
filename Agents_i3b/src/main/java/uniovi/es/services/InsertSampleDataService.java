@@ -15,11 +15,11 @@ public class InsertSampleDataService {
 
 	@PostConstruct
 	public void init() {
-		Agent agent1 = new Agent("11111111A","123456","Pepe","pepe@gmail.com","Oviedo","Person","1");
-		agentsRepository.save(agent1);
-		Agent agent2 = new Agent("22222222B","123456","Jose","jose@gmail.com","Gijón","Person","1");
-		agentsRepository.save(agent2);
-		Agent agent3 = new Agent("33333333C","123456","Pelayo","pelayo@gmail.com","Pravia","Person","1");
-		agentsRepository.save(agent3);		
+//		Agent agent1 = new Agent("11111111A","123456","Pepe","pepe@gmail.com","Oviedo","Person","1");
+//		agentsRepository.save(agent1);
+//		Agent agent2 = new Agent("22222222B","123456","Jose","jose@gmail.com","Gijón","Person","1");
+//		agentsRepository.save(agent2);
+//		Agent agent3 = new Agent("33333333C","123456","Pelayo","pelayo@gmail.com","Pravia","Person","1");
+//		agentsRepository.save(agent3);		
 	}
 }
