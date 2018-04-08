@@ -3,7 +3,7 @@ package uniovi.es.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection= "agents")
+@Document(collection= "agentscollec")
 public class Agent {
 
     @Id

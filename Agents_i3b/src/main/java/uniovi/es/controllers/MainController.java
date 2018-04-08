@@ -27,7 +27,7 @@ public class MainController {
     		@RequestParam(value = "password") String password, 
     		@RequestParam(value = "kind") String kindCode ) {
 
-        Agent user = agentsService.getAgent(login, password,kindCode);
+        Agent user = agentsService.getAgent(login, password, kindCode);
 
         if (user == null)
         {

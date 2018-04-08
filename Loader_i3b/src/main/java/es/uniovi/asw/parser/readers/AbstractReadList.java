@@ -40,7 +40,7 @@ public abstract class AbstractReadList implements ReadList {
 
 	@Override
 	public Set<AbstractAgent> parse(String ruta) {
-
+		
 		doParse(ruta);
 
 		if (agentsCensus != null && agentsCensus.size() > 0) {

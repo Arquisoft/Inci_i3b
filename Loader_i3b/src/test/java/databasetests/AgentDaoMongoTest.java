@@ -31,8 +31,9 @@ public class AgentDaoMongoTest {
 
 	@BeforeClass
 	public static void setUp() {
-		dao = new AgentDaoImplMongo("localhost", 27017, "test_db", "agent_test");
+		dao = new AgentDaoImplMongo("localhost", 27017, "test_database", "agents_test");
 		dao.cleanDatabase();
+		
 	}
 
 	@Before
@@ -179,15 +180,6 @@ public class AgentDaoMongoTest {
 		AbstractAgent a = agents.get(0);
 		assertEquals(dummy4.toString(), a.toString());
 		
-	}
-	
-	@Test
-	public void testGeneralAgents() {
-		dao.insert(dummy3);
-		List<AbstractAgent> agents = dao.findAll();
-		AbstractAgent a = agents.get(0);
-		String kind = a.toString().split(" ")[0];
-		assertEquals("Company", kind);
 	}
 
 }
