@@ -24,7 +24,7 @@ public class AgentLogin {
 		return kindCode;
 	}
 
-	public void setKind(String kind) {
+	public void setKindCode(String kind) {
 		this.kindCode = kind;
 	}
 

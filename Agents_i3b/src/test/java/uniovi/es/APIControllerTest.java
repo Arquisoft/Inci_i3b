@@ -47,26 +47,13 @@ public class APIControllerTest {
     }
 
     @Test
-    public void testDatabase() throws Exception {
-    	Agent user = new Agent("11111111A","123456","Pepe","mail@mail.com","Oviedo","Person","1");
-        agentsService.deleteUser(user);
-        agentsService.insertUser(user);
-        
-        Agent userFromDB = agentsService.getAgent("11111111A", "123456", "1");
-        assertThat(user.getId(), equalTo(userFromDB.getId()));
-        assertThat(user.getPassword(), equalTo(userFromDB.getPassword()));
-        assertThat(user.getKind(), equalTo(userFromDB.getKind()));  
-
-    }
-
-    @Test
     public void postTestUser() throws Exception {
     	Agent user = new Agent("11111111A","123456","Pepe","pepe@gmail.com","Oviedo","Person","1");
 		  agentsService.deleteUser(user);
 		  agentsService.insertUser(user);
 		  try {
 		  mockMvc.perform(post("/checkAgent")
-		          .content("{ \"login\": \"11111111A\", \"password\": \"123456\", \"kind\": \"1\"}")
+		          .content("{ \"login\": \"11111111A\", \"password\": \"123456\", \"kindCode\": \"1\"}")
 		          .contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 		                  MediaType.APPLICATION_JSON.getSubtype(),
 		                  Charset.forName("utf8"))))
@@ -85,7 +72,7 @@ public class APIControllerTest {
     @Test
     public void postTestNotFoundUser() throws Exception {
         mockMvc.perform(post("/checkAgent")
-                .content("{ \"login\": \"11111111A\", \"password\": \"123456\", \"kind\": \"3\"}")
+                .content("{ \"login\": \"11111111A\", \"password\": \"123456\", \"kindCode\": \"3\"}")
                 .contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
                         MediaType.APPLICATION_JSON.getSubtype(),
                         Charset.forName("utf8"))))
