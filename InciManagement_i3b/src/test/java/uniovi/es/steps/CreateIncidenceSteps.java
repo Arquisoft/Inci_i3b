@@ -39,67 +39,44 @@ public class CreateIncidenceSteps {
 
 	  @When(value = "the user log in session")
 	  public void testUntitledTestCase() throws Exception {
-		  driver.get("http://localhost:8080/logIn");
-		    driver.findElement(By.name("login")).clear();
-		    driver.findElement(By.name("login")).sendKeys("");
-		    driver.findElement(By.name("login")).click();
-		    driver.findElement(By.name("login")).clear();
-		    driver.findElement(By.name("login")).sendKeys("11111111A");
-		    driver.findElement(By.name("password")).clear();
-		    driver.findElement(By.name("password")).sendKeys("123456");
-		    driver.findElement(By.name("kind")).clear();
-		    driver.findElement(By.name("kind")).sendKeys("1");
-		    driver.findElement(By.xpath("//button[@type='submit']")).click();  
-		  
-	    driver.get("http://localhost:8080/logIn");
-	    driver.findElement(By.name("login")).click();
-	    driver.findElement(By.name("login")).clear();
-	    driver.findElement(By.name("login")).sendKeys("11111111A");
-	    driver.findElement(By.name("password")).clear();
-	    driver.findElement(By.name("password")).sendKeys("123456");
-	    driver.findElement(By.name("kind")).clear();
-	    driver.findElement(By.name("kind")).sendKeys("1");
-	    driver.findElement(By.xpath("//button[@type='submit']")).click();
-	    driver.findElement(By.name("login")).click();
-	    driver.findElement(By.name("login")).click();
-	    driver.findElement(By.name("login")).clear();
-	    driver.findElement(By.name("login")).sendKeys("PersonName");
-	    driver.findElement(By.name("login")).click();
-	    driver.findElement(By.name("login")).clear();
-	    driver.findElement(By.name("login")).sendKeys("11111111A");
-	    driver.findElement(By.name("password")).clear();
-	    driver.findElement(By.name("password")).sendKeys("123456");
-	    driver.findElement(By.name("kind")).clear();
-	    driver.findElement(By.name("kind")).sendKeys("1");
-	    driver.findElement(By.xpath("//button[@type='submit']")).click();
-	    driver.findElement(By.id("key")).click();
-	    driver.findElement(By.id("key")).clear();
-	    driver.findElement(By.id("key")).sendKeys("f1");
-	    driver.findElement(By.id("value")).clear();
-	    driver.findElement(By.id("value")).sendKeys("f2");
-	    driver.findElement(By.id("addButton")).click();
-	    driver.findElement(By.xpath("//div[@id='incident-form']/div/form[2]/div")).click();
-	    driver.findElement(By.xpath("//div[@id='incident-form']/div/form[2]/div")).click();
-	    driver.findElement(By.id("title")).click();
-	    driver.findElement(By.id("title")).clear();
-	    driver.findElement(By.id("title")).sendKeys("titulo");
-	    driver.findElement(By.id("message")).clear();
-	    driver.findElement(By.id("message")).sendKeys("desc");
-	    driver.findElement(By.id("aditionalInfo")).clear();
-	    driver.findElement(By.id("aditionalInfo")).sendKeys("adinfo");
-	    driver.findElement(By.id("tags")).clear();
-	    driver.findElement(By.id("tags")).sendKeys("tag,tags,tagggs");
-	    driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.get("http://localhost:8080/logIn");
+		driver.findElement(By.name("login")).clear();
+		driver.findElement(By.name("login")).sendKeys("");
+		driver.findElement(By.name("login")).click();
+		driver.findElement(By.name("login")).clear();
+		driver.findElement(By.name("login")).sendKeys("11111111A");
+		driver.findElement(By.name("password")).clear();
+		driver.findElement(By.name("password")).sendKeys("123456");
+		driver.findElement(By.name("kind")).clear();
+		driver.findElement(By.name("kind")).sendKeys("1");
+		driver.findElement(By.xpath("//button[@type='submit']")).click();  
 	  }
 	  
-	  @Then(value = "see a page to create incidences")
-	  public void testUntitledTestCase2() throws Exception {}
-	  
 	  @Then(value = "fill the text fields and clicks Notify Incidence")
-	  public void testUntitledTestCase3() throws Exception {}
+	  public void testUntitledTestCase2() throws Exception 
+	  {
+		  driver.findElement(By.id("key")).click();
+		    driver.findElement(By.id("key")).clear();
+		    driver.findElement(By.id("key")).sendKeys("f1");
+		    driver.findElement(By.id("value")).clear();
+		    driver.findElement(By.id("value")).sendKeys("f2");
+		    driver.findElement(By.id("addButton")).click();
+		    driver.findElement(By.xpath("//div[@id='incident-form']/div/form[2]/div")).click();
+		    driver.findElement(By.xpath("//div[@id='incident-form']/div/form[2]/div")).click();
+		    driver.findElement(By.id("title")).click();
+		    driver.findElement(By.id("title")).clear();
+		    driver.findElement(By.id("title")).sendKeys("titulo");
+		    driver.findElement(By.id("message")).clear();
+		    driver.findElement(By.id("message")).sendKeys("desc");
+		    driver.findElement(By.id("aditionalInfo")).clear();
+		    driver.findElement(By.id("aditionalInfo")).sendKeys("adinfo");
+		    driver.findElement(By.id("tags")).clear();
+		    driver.findElement(By.id("tags")).sendKeys("tag,tags,tagggs");
+		    driver.findElement(By.xpath("//button[@type='submit']")).click();
+	  }
 
 	  @Then(value = "an incidence is created (and redirected to a list view of them)")
-	  public void testUntitledTestCase4() throws Exception {}
+	  public void testUntitledTestCase3() throws Exception {}
 
 	  
 	  @After
