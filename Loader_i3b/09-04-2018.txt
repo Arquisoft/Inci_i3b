@@ -1,0 +1,42 @@
+ERROR 
+------------------------------
+Date and hour: 09-04-2018 16:15:31
+Error: No se ha encontrado el archivo solicitado
+Message exception: agents.xlsx (El sistema no puede encontrar el archivo especificado)
+
+ERROR 
+------------------------------
+Date and hour: 09-04-2018 16:20:09
+Error: No se ha encontrado el archivo solicitado
+Message exception: \runnable\agents.xlsx (El sistema no puede encontrar la ruta especificada)
+
+ERROR 
+------------------------------
+Date and hour: 09-04-2018 16:20:35
+Error: No se ha encontrado el archivo solicitado
+Message exception: src\runnable\agents.xlsx (El sistema no puede encontrar la ruta especificada)
+
+ERROR 
+------------------------------
+Date and hour: 09-04-2018 16:22:34
+Error: No se ha encontrado el archivo solicitado
+Message exception: runnable (Acceso denegado)
+
+ERROR 
+------------------------------
+Date and hour: 09-04-2018 16:24:05
+Error: No se ha encontrado el archivo solicitado
+Message exception: runnable (Acceso denegado)
+
+ERROR 
+------------------------------
+Date and hour: 09-04-2018 16:27:23
+Error: No se ha encontrado el archivo solicitado
+Message exception: C:\Users\ALFREDOF\Documents\UNI\3º\2o (El sistema no puede encontrar el archivo especificado)
+
+ERROR 
+------------------------------
+Date and hour: 09-04-2018 16:27:23
+Error: File not found
+Message exception: cuatri\asw\repository\Final\Inci_i3b\Loader_i3b\runnable\master.csv (El sistema no puede encontrar la ruta especificada)
+
