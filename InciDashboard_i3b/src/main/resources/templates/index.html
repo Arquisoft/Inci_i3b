@@ -17,6 +17,7 @@
     <link href="css/tabla.css" rel="stylesheet" type="text/css"/>
     
     <script>
+    //<![CDATA[
 		var source = new EventSource("/raw");
 		source.onmessage = function(event) {
 			var table = document.getElementById("tableIncidences");
@@ -29,14 +30,30 @@
 			var cell6 = row.insertCell(5);
 			var cell7 = row.insertCell(6);
 			var obj = JSON.parse(event.data);
-			cell1.innerHTML = obj.id;
-			cell2.innerHTML = obj.name;
-			cell3.innerHTML = obj.description;
-			cell4.innerHTML = obj.username;
-			cell5.innerHTML = obj.usertype;
-			cell6.innerHTML = obj.state;
-			cell7.innerHTML = obj.operator;
+			var type = obj.usertype;
+			var tempField = obj.customfields.temp;
+			var isTempDefined = typeof tempField!='undefined'
+			if(type==3 && isTempDefined && (tempField<10 || tempField>30)) {
+				cell1.innerHTML = '<strong class="text-danger">' + obj.id + '</strong>';
+				cell2.innerHTML = '<strong class="text-danger">' + obj.name + '</strong>';
+				cell3.innerHTML = '<strong class="text-danger">' + obj.description + '</strong>';
+				cell4.innerHTML = '<strong class="text-danger">' + obj.username + '</strong>';
+				cell5.innerHTML = '<strong class="text-danger">' + obj.usertype + '</strong>';
+				cell6.innerHTML = '<strong class="text-danger">' + obj.state + '</strong>';
+				cell7.innerHTML = '<strong class="text-danger">' + obj.operator + '</strong>';
+			}
+			else {
+				cell1.innerHTML = obj.id;
+				cell2.innerHTML = obj.name;
+				cell3.innerHTML = obj.description;
+				cell4.innerHTML = obj.username;
+				cell5.innerHTML = obj.usertype;
+				cell6.innerHTML = obj.state;
+				cell7.innerHTML = obj.operator;	
+			}
+			
 		}
+	//]]>
 	</script>
 	
 </head>
