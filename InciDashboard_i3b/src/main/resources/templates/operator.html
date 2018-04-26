@@ -17,6 +17,7 @@
     <link href="css/tabla.css" rel="stylesheet" type="text/css"/>
     
     <script>
+  	//<![CDATA[
 		var source = new EventSource("/raw");
 		source.onmessage = function(event) {
 			var table = document.getElementById("tableIncidences");
@@ -29,13 +30,32 @@
 			var cell6 = row.insertCell(5);
 			var cell7 = row.insertCell(6);
 			var obj = JSON.parse(event.data);
-			cell1.innerHTML = obj.id;
-			cell2.innerHTML = obj.name;
-			cell3.innerHTML = obj.description;
-			cell4.innerHTML = obj.username;
-			cell5.innerHTML = obj.usertype;
-			cell6.innerHTML = obj.state;
-			cell7.innerHTML = obj.operator;
+			var type = obj.usertype;
+			var tempField = obj.customfields.temp;
+			var isTempDefined = typeof tempField!='undefined';
+			var markAsAlert = type==3 && isTempDefined && (tempField<10 || tempField>30);
+			
+			if(markAsAlert) {
+				cell1.innerHTML = '<strong class="text-danger">' + obj.id + '</strong>';
+				cell2.innerHTML = '<strong class="text-danger">' + obj.name + '</strong>';
+				cell3.innerHTML = '<strong class="text-danger">' + obj.description + '</strong>';
+				cell4.innerHTML = '<strong class="text-danger">' + obj.username + '</strong>';
+				cell5.innerHTML = '<strong class="text-danger">' + obj.usertype + '</strong>';
+				cell6.innerHTML = '<strong class="text-danger">' + obj.state + '</strong>';
+				cell7.innerHTML = '<strong class="text-danger">' + obj.operator + '</strong>';
+				var alertText = "The sensor " + obj.username + " has emitted a dangerous temperature (" + tempField + "º)";
+				setTimeout(function(){ alert(alertText); }, 500);
+			}
+			else {
+				cell1.innerHTML = obj.id;
+				cell2.innerHTML = obj.name;
+				cell3.innerHTML = obj.description;
+				cell4.innerHTML = obj.username;
+				cell5.innerHTML = obj.usertype;
+				cell6.innerHTML = obj.state;
+				cell7.innerHTML = obj.operator;
+			}
+			
 			
 			var operator = document.getElementById("loggedoperator").innerHTML;
 			if(operator.localeCompare(obj.operator)==0) {
@@ -46,16 +66,25 @@
 				var cell10 = row2.insertCell(2);
 				var cell11 = row2.insertCell(3);
 				var cell12 = row2.insertCell(4);
-				cell8.innerHTML = obj.id;
-				cell9.innerHTML = obj.name;
-				cell10.innerHTML = obj.description;
-				cell11.innerHTML = obj.state;
+				if(markAsAlert) {
+					cell8.innerHTML = '<strong class="text-danger">' + obj.id + '</strong>';
+					cell9.innerHTML = '<strong class="text-danger">' + obj.name + '</strong>';
+					cell10.innerHTML = '<strong class="text-danger">' + obj.description + '</strong>';
+					cell11.innerHTML = '<strong class="text-danger">' + obj.state + '</strong>';
+				}
+				else {
+					cell8.innerHTML = obj.id;
+					cell9.innerHTML = obj.name;
+					cell10.innerHTML = obj.description;
+					cell11.innerHTML = obj.state;
+				}
 				var str = "Manage";
 				var strref = "/manage/"+obj.id;
 				var result = str.link(strref);
 				cell12.innerHTML = result;
 			}
 		}
+	//]]>
 	</script>
 	
 </head>
@@ -132,13 +161,24 @@
 					<th>Operator</th>
 				</tr>
 				<tr th:each="inci : ${incidences}">
-					<td th:text="${inci.getInciId()}"></td>
-					<td th:text="${inci.getInci_name()}"></td>
-					<td th:text="${inci.getInci_description()}"></td>
-					<td th:text="${inci.getUsername()}"></td>
-					<td th:text="${inci.getUsertype()}"></td>
-					<td th:text="${inci.getStateStr()}"></td>
-					<td th:text="${inci.getOperatorId()}"></td>
+					<span th:if="${inci.isAnAlert()}">
+						<td th:text="${inci.getInciId()}" class="text-danger"></td>
+						<td th:text="${inci.getInci_name()}" class="text-danger"></td>
+						<td th:text="${inci.getInci_description()}" class="text-danger"></td>
+						<td th:text="${inci.getUsername()}" class="text-danger"></td>
+						<td th:text="${inci.getUsertype()}" class="text-danger"></td>
+						<td th:text="${inci.getStateStr()}" class="text-danger"></td>
+						<td th:text="${inci.getOperatorId()}" class="text-danger"></td>
+					</span>
+					<span th:if="${not inci.isAnAlert()}">
+						<td th:text="${inci.getInciId()}"></td>
+						<td th:text="${inci.getInci_name()}"></td>
+						<td th:text="${inci.getInci_description()}"></td>
+						<td th:text="${inci.getUsername()}"></td>
+						<td th:text="${inci.getUsertype()}"></td>
+						<td th:text="${inci.getStateStr()}"></td>
+						<td th:text="${inci.getOperatorId()}"></td>
+					</span>
 				</tr>
 			</table>
 		</div>

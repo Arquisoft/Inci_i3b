@@ -1,11 +1,15 @@
 package model;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.annotation.Id;
+import org.webbitserver.handler.exceptions.PrintStackTraceExceptionHandler;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.google.gson.Gson;
@@ -214,6 +218,30 @@ public class Incidence {
 		for (String s:tags)
 			str+=s+",";
 		return str;
+	}
+	
+	public String getCustomFieldsStr() {
+		String result = "";
+		for(Map.Entry<String, String> entry : customFields.entrySet()) {
+			String key = entry.getKey();
+			String value = entry.getValue();
+			result += "{" + key + ":" + value + "} ; ";
+		}
+		return result;
+	}
+	
+	public boolean isAnAlert() {
+		String tmp = customFields.get("temp");
+		try {
+			if(tmp==null)
+				return false;
+			int tempValue = Integer.parseInt(tmp);
+			return usertype==3 && (tempValue<10 || tempValue>30);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+		
 	}
 
 

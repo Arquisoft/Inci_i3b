@@ -41,7 +41,7 @@
 				cell5.innerHTML = '<strong class="text-danger">' + obj.usertype + '</strong>';
 				cell6.innerHTML = '<strong class="text-danger">' + obj.state + '</strong>';
 				cell7.innerHTML = '<strong class="text-danger">' + obj.operator + '</strong>';
-				var alertText = "The sensor " + obj.username + " has emitted a dangerous temperature";
+				var alertText = "The sensor " + obj.username + " has emitted a dangerous temperature (" + tempField + "º)";
 				setTimeout(function(){ alert(alertText); }, 500);
 			}
 			else {
@@ -107,13 +107,24 @@
 					<th>Operator</th>
 				</tr>
 				<tr th:each="inci : ${incidences}">
-					<td th:text="${inci.getInciId()}"></td>
-					<td th:text="${inci.getInci_name()}"></td>
-					<td th:text="${inci.getInci_description()}"></td>
-					<td th:text="${inci.getUsername()}"></td>
-					<td th:text="${inci.getUsertype()}"></td>
-					<td th:text="${inci.getStateStr()}"></td>
-					<td th:text="${inci.getOperatorId()}"></td>
+					<span th:if="${inci.isAnAlert()}">
+						<td th:text="${inci.getInciId()}" class="text-danger"></td>
+						<td th:text="${inci.getInci_name()}" class="text-danger"></td>
+						<td th:text="${inci.getInci_description()}" class="text-danger"></td>
+						<td th:text="${inci.getUsername()}" class="text-danger"></td>
+						<td th:text="${inci.getUsertype()}" class="text-danger"></td>
+						<td th:text="${inci.getStateStr()}" class="text-danger"></td>
+						<td th:text="${inci.getOperatorId()}" class="text-danger"></td>
+					</span>
+					<span th:if="${not inci.isAnAlert()}">
+						<td th:text="${inci.getInciId()}"></td>
+						<td th:text="${inci.getInci_name()}"></td>
+						<td th:text="${inci.getInci_description()}"></td>
+						<td th:text="${inci.getUsername()}"></td>
+						<td th:text="${inci.getUsertype()}"></td>
+						<td th:text="${inci.getStateStr()}"></td>
+						<td th:text="${inci.getOperatorId()}"></td>
+					</span>
 				</tr>
 			</table>
 		</div>

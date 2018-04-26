@@ -52,6 +52,8 @@
 						<p><strong>Extra Info: </strong><span th:text="${inci.getInci_info()}"></span></p>
 						<p><strong>Tags: </strong><span th:text="${inci.tagsToStr()}"></span></p>
 						<p><strong>Current State: </strong><span th:text="${inci.getStateStr()}"></span></p>
+						<p><strong>Custom Fields:</strong></p>
+						<p><span th:text="${inci.getCustomFieldsStr()}"></span></p>
 						<p><strong>Comments: </strong></p>
 						<span th:each="comment : ${inci.getComments()}">
 							<p th:text="${comment}"></p>
