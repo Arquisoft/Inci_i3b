@@ -41,6 +41,8 @@
 				cell5.innerHTML = '<strong class="text-danger">' + obj.usertype + '</strong>';
 				cell6.innerHTML = '<strong class="text-danger">' + obj.state + '</strong>';
 				cell7.innerHTML = '<strong class="text-danger">' + obj.operator + '</strong>';
+				var alertText = "The sensor " + obj.username + " has emitted a dangerous temperature";
+				setTimeout(function(){ alert(alertText); }, 500);
 			}
 			else {
 				cell1.innerHTML = obj.id;
