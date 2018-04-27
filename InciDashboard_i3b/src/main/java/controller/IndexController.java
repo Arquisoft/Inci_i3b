@@ -18,6 +18,7 @@ import model.Incidence;
 import model.Operator;
 import repository.IncidenceRepository;
 import repository.OperatorRepository;
+import utils.IncidenceUtils;
 
 
 @Controller
@@ -43,7 +44,8 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index(Model model) {
 		OperatorController.loggedOperator=null;
-		List<Incidence> incis = inciRepo.findAll();
+		List<Incidence> allIncis = inciRepo.findAll();
+		List<Incidence> incis = IncidenceUtils.filterByState(allIncis);
 		model.addAttribute("incidences", incis);
 		return INDEX_VIEW;
 	}

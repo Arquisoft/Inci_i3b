@@ -25,10 +25,11 @@ public class OperatorController {
 	public String operatorPanel(Model model) {
 		if(loggedOperator==null)
 			return "redirect:index";
-		List<Incidence> incis = repo.findAll();
-		model.addAttribute("incidences", incis);
+		List<Incidence> allIncis = repo.findAll();
+		List<Incidence> notClosedIncis = IncidenceUtils.filterByState(allIncis);
+		model.addAttribute("incidences", notClosedIncis);
 		model.addAttribute("operator", loggedOperator);
-		List<Incidence> assignedIncis = IncidenceUtils.filterByOperator(incis, loggedOperator.getOperatorId());
+		List<Incidence> assignedIncis = IncidenceUtils.filterByOperator(notClosedIncis, loggedOperator.getOperatorId());
 		model.addAttribute("assignedIncis", assignedIncis);
 		return "operator";
 	}

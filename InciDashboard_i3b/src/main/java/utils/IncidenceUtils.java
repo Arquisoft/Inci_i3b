@@ -32,4 +32,12 @@ public class IncidenceUtils {
 		return result;
 	}
 
+	public static List<Incidence> filterByState(List<Incidence>incis){
+		List<Incidence> result = new ArrayList<Incidence>();
+		for(Incidence i : incis) {
+			if(i.getState()!=2)
+				result.add(i);
+		}
+		return result;
+	}
 }

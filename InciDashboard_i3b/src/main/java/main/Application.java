@@ -11,7 +11,9 @@ import repository.IncidenceRepository;
 @ComponentScan({"controller", "kafka"})
 @EnableMongoRepositories(basePackageClasses = IncidenceRepository.class)
 public class Application {   
+	
     public static void main(String[] args) {
     	SpringApplication.run(Application.class, args);
     }
+
 }

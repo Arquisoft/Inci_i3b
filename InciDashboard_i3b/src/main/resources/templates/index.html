@@ -108,13 +108,13 @@
 				</tr>
 				<tr th:each="inci : ${incidences}">
 					<span th:if="${inci.isAnAlert()}">
-						<td th:text="${inci.getInciId()}" class="text-danger"></td>
-						<td th:text="${inci.getInci_name()}" class="text-danger"></td>
-						<td th:text="${inci.getInci_description()}" class="text-danger"></td>
-						<td th:text="${inci.getUsername()}" class="text-danger"></td>
-						<td th:text="${inci.getUsertype()}" class="text-danger"></td>
-						<td th:text="${inci.getStateStr()}" class="text-danger"></td>
-						<td th:text="${inci.getOperatorId()}" class="text-danger"></td>
+						<td><strong th:text="${inci.getInciId()}" class="text-danger"></strong></td>
+						<td><strong th:text="${inci.getInci_name()}" class="text-danger"></strong></td>
+						<td><strong th:text="${inci.getInci_description()}" class="text-danger"></strong></td>
+						<td><strong th:text="${inci.getUsername()}" class="text-danger"></strong></td>
+						<td><strong th:text="${inci.getUsertype()}" class="text-danger"></strong></td>
+						<td><strong th:text="${inci.getStateStr()}" class="text-danger"></strong></td>
+						<td><strong th:text="${inci.getOperatorId()}" class="text-danger"></strong></td>
 					</span>
 					<span th:if="${not inci.isAnAlert()}">
 						<td th:text="${inci.getInciId()}"></td>
