@@ -1,6 +1,5 @@
 package model;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.annotation.Id;
-import org.webbitserver.handler.exceptions.PrintStackTraceExceptionHandler;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
