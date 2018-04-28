@@ -1,13 +1,21 @@
 package selenium;
 
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import org.junit.runner.RunWith;
+import static org.junit.Assert.fail;
 
-import static org.junit.Assert.*;
-import org.openqa.selenium.*;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.PostConstruct;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -18,6 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import main.Application;
+import model.Operator;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -27,6 +36,8 @@ public class LoginDashboardSeleniumTest {
   @Autowired
   private WebApplicationContext context;
   private MockMvc mvc;
+	@Autowired
+	private repository.OperatorRepository operatorRepository;
   
   private WebDriver driver;
   private String baseUrl;
@@ -39,10 +50,24 @@ public class LoginDashboardSeleniumTest {
     driver = new HtmlUnitDriver();
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+
+		if (operatorRepository.count() == 0)
+		{
+		Operator o1 = new Operator("operator1", "asd");
+		Operator o2 = new Operator("operator2", "asd");
+		Operator o3 = new Operator("operator3", "asd");
+		Operator o4 = new Operator("operator4", "asd");
+		operatorRepository.insert(o1);
+		operatorRepository.insert(o2);
+		operatorRepository.insert(o3);
+		operatorRepository.insert(o4);
+	}
   }
 
-  @Test
+  @Test //meter operator en la database
   public void testLogin() throws Exception {
+	
     driver.get("http://localhost:8090/index");
     driver.findElement(By.name("id")).click();
     driver.findElement(By.name("id")).clear();
