@@ -24,7 +24,7 @@ import main.Application;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest({ "8090" })
-public class DashBoardTest {
+public class DashBoardSeleniumTest {
 	
 	@Autowired
 	private WebApplicationContext context;
