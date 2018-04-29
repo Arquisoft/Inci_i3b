@@ -27,20 +27,6 @@ public class AddCustomFieldsSteps {
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
-	  @Test
-	  public void testUntitledTestCase() throws Exception {
-
-	    
-	    driver.findElement(By.id("addButton")).click();
-	    driver.findElement(By.id("key")).click();
-	    driver.findElement(By.id("key")).clear();
-	    driver.findElement(By.id("key")).sendKeys("fieldname2");
-	    driver.findElement(By.id("value")).clear();
-	    driver.findElement(By.id("value")).sendKeys("valuename3");
-	    driver.findElement(By.id("add-custom-fields-form")).submit();
-	    driver.findElement(By.id("addButton")).click();
-	  }
-/////////////////////////////////////////////////////////
 	  @When(value = "the user log in session")
 	  public void testUntitledTestCasee() throws Exception {
 		driver.get("http://localhost:8080/logIn");
@@ -81,37 +67,4 @@ public class AddCustomFieldsSteps {
 	    }
 	  }
 
-	  private boolean isElementPresent(By by) {
-	    try {
-	      driver.findElement(by);
-	      return true;
-	    } catch (NoSuchElementException e) {
-	      return false;
-	    }
-	  }
-
-	  private boolean isAlertPresent() {
-	    try {
-	      driver.switchTo().alert();
-	      return true;
-	    } catch (NoAlertPresentException e) {
-	      return false;
-	    }
-	  }
-
-	  private String closeAlertAndGetItsText() {
-	    try {
-	      Alert alert = driver.switchTo().alert();
-	      String alertText = alert.getText();
-	      if (acceptNextAlert) {
-	        alert.accept();
-	      } else {
-	        alert.dismiss();
-	      }
-	      return alertText;
-	    } finally {
-	      acceptNextAlert = true;
-	    }
-	  }
-	
 }
