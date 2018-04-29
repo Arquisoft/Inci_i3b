@@ -18,7 +18,7 @@ public class CucumberUtils {
 	 * @param driver: apuntando al navegador abierto actualmente.
 	 * @param texto: texto a buscar
 	 */
-	static public void textoPresentePagina(WebDriver driver, String texto)
+	public void textoPresentePagina(WebDriver driver, String texto)
 	{
 		List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + texto + "')]"));		
 		assertTrue("Texto " + texto + " no localizado!", list.size() > 0);			

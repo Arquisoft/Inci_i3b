@@ -11,11 +11,13 @@ import org.openqa.selenium.support.ui.Select;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import uniovi.es.steps.utils.CucumberUtils;
 
 
 public class AddCustomFieldsSteps {
 
-	private WebDriver driver;
+	  private CucumberUtils utils = new CucumberUtils();
+	  private WebDriver driver;
 	  private String baseUrl;
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();

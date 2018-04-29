@@ -20,12 +20,14 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import uniovi.es.Application;
+import uniovi.es.steps.utils.CucumberUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class CreateIncidenceSteps {
-	private WebDriver driver;
+	  private CucumberUtils utils = new CucumberUtils();
+	  private WebDriver driver;
 	  private String baseUrl;
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
