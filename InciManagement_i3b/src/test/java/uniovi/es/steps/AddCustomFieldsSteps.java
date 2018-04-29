@@ -47,17 +47,28 @@ public class AddCustomFieldsSteps {
 	  @Then(value = "fill the form of a field")
 	  public void testUntitledTestCase2() throws Exception 
 	  {
+		//esta en la pagina de crearla
+		  utils.textoPresentePagina(driver, "Create new incident");
+		  	
 		  driver.findElement(By.id("key")).click();
-		    driver.findElement(By.id("key")).clear();
-		    driver.findElement(By.id("key")).sendKeys("fieldname");
-		    driver.findElement(By.id("value")).clear();
-		    driver.findElement(By.id("value")).sendKeys("valueName");
+		  driver.findElement(By.id("key")).clear();
+		  driver.findElement(By.id("key")).sendKeys("fieldname");
+		  driver.findElement(By.id("value")).clear();
+		  driver.findElement(By.id("value")).sendKeys("valueName");
 	  }
 
 	  @Then(value = "click Add field")
 	  public void testUntitledTestCase3() throws Exception 
 	  {
 		  driver.findElement(By.id("addButton")).click();
+	  }
+	  
+	  @Then(value = "see the info")
+	  public void testUntitledTestCase4() throws Exception 
+	  {
+		  //sale el nuevo campo
+		  utils.textoPresentePagina(driver, "fieldname");
+		  utils.textoPresentePagina(driver, "valueName");
 	  }
 	  
 	  @After

@@ -78,7 +78,15 @@ public class CreateIncidenceSteps {
 	  }
 
 	  @Then(value = "an incidence is created (and redirected to a list view of them)")
-	  public void testUntitledTestCase3() throws Exception {}
+	  public void testUntitledTestCase3() throws Exception 
+	  {
+		  //esta en la pagina de lista
+		  utils.textoPresentePagina(driver, "title");
+		  utils.textoPresentePagina(driver, "Comments(from the operators)");		  
+		  //sale el incidente
+		  utils.textoPresentePagina(driver, "titulo");
+		  utils.textoPresentePagina(driver, "desc");
+	  }
 
 	  
 	  @After

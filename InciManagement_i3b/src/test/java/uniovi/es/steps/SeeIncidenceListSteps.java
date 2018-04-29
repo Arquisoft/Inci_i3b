@@ -50,6 +50,7 @@ public class SeeIncidenceListSteps {
 	  @Then(value = "click the option of review my incidence")
 	  public void testUntitledTestCase2() throws Exception 
 	  {
+		  utils.textoPresentePagina(driver, "Create new incident");
 		  driver.findElement(By.linkText("Review my incidents")).click();
 	  } 
 	  
