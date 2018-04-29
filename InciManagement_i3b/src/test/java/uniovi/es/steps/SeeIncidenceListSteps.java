@@ -30,12 +30,7 @@ public class SeeIncidenceListSteps {
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
-	  @Test
-	  public void testUntitledTestCase() throws Exception {
-	    	    driver.findElement(By.linkText("Review my incidents")).click();
-	  }
-
-	  @When(value = "the user log in session")
+	  @When(value = "the user log in")
 	  public void testUntitledTestCasete() throws Exception {
 		driver.get("http://localhost:8080/logIn");
 		driver.findElement(By.name("login")).clear();
