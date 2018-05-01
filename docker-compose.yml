@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.6'
 services:
   mongo:
     image: mongo
@@ -17,14 +17,14 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ADVERTISED_PORT: 9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-    links:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
       - zookeeper
-  app:
+  agents:
     build: 
-      context: ./InciDashboard_i3b
+      context: ./Agents_i3b
     ports: 
-      - "8090:8090"
-    links:
-      - kafka
-      - zookeeper
+      - "8085:8085"
+    depends_on:
       - mongo
