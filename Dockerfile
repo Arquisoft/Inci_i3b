@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 RUN apt-get update
+RUN apt-get apt-utils
 RUN apt-get install -y openjdk-8-jdk wget maven
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu $(cat /etc/lsb-release | grep DISTIB_CODENAME | cut -d= -f2) /mongodb-org/3.2"
