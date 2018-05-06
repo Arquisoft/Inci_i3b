@@ -27,6 +27,7 @@ public class AddCustomFieldsSteps {
 	  private StringBuffer verificationErrors = new StringBuffer();
 
 //	  @When(value = "^the user logs in")
+	  @When("^the user logs in session$")
 	  public void testUntitledTestCasee() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
@@ -42,6 +43,7 @@ public class AddCustomFieldsSteps {
 	  }
 	  
 //	  @Then(value = "^fill the form of a field")
+	  @Then("^fill the form of a field$")
 	  public void testUntitledTestCase2() throws Exception 
 	  {
 		//esta en la pagina de crearla
@@ -55,12 +57,14 @@ public class AddCustomFieldsSteps {
 	  }
 
 //	  @Then(value = "^click Add field")
+	  @Then("^click Add field$")
 	  public void testUntitledTestCase3() throws Exception 
 	  {
 		  driver.findElement(By.id("addButton")).click();
 	  }
 	  
 //	  @Then(value = "^see the info")
+	  @Then("^see the info$")
 	  public void testUntitledTestCase4() throws Exception 
 	  {
 		  //sale el nuevo campo
