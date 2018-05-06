@@ -42,7 +42,7 @@ public class IndexController {
 		return "redirect:/index";
 	}
 	@RequestMapping("/index")
-	public String index(Model model) {
+	public String showIncidences(Model model) {
 		OperatorController.loggedOperator=null;
 		List<Incidence> allIncis = inciRepo.findAll();
 		List<Incidence> incis = IncidenceUtils.filterByState(allIncis);

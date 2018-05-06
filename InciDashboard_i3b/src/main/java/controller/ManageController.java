@@ -34,7 +34,7 @@ public class ManageController {
     }
 	 
 	 @PostMapping("/manage/addIncidence")
-	 public ModelAndView addIncidence(@ModelAttribute ("inci") Incidence inci) {
+	 public ModelAndView modifyIncidence(@ModelAttribute ("inci") Incidence inci) {
 		 repo.delete(lastIncidence);
 		 List<String> comments = lastIncidence.getComments();
 		 comments.add(inci.getComment());
