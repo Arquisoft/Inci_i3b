@@ -38,12 +38,6 @@ public class CreateIncidenceSteps {
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
 
-	  @Before
-	  public void setUp() throws Exception {
-	    driver = new FirefoxDriver();
-	    baseUrl = "https://www.katalon.com/";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	  }
 
 	  @When(value = "the user log in session")
 	  public void testUntitledTestCase() throws Exception {
@@ -92,16 +86,6 @@ public class CreateIncidenceSteps {
 		  //sale el incidente
 		  utils.textoPresentePagina(driver, "titulo");
 		  utils.textoPresentePagina(driver, "desc");
-	  }
-
-	  
-	  @After
-	  public void tearDown() throws Exception {
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
 	  }
 
 }

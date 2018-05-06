@@ -1,13 +1,7 @@
 package uniovi.es.steps;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,13 +25,6 @@ public class AddCustomFieldsSteps {
 	  private String baseUrl;
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
-
-	  @Before
-	  public void setUp() throws Exception {
-	    driver = new FirefoxDriver();
-	    baseUrl = "https://www.katalon.com/";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	  }
 
 	  @When(value = "the user logs in session")
 	  public void testUntitledTestCasee() throws Exception {
@@ -79,15 +66,6 @@ public class AddCustomFieldsSteps {
 		  //sale el nuevo campo
 		  utils.textoPresentePagina(driver, "fieldname");
 		  utils.textoPresentePagina(driver, "valueName");
-	  }
-	  
-	  @After
-	  public void tearDown() throws Exception {
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
 	  }
 
 }

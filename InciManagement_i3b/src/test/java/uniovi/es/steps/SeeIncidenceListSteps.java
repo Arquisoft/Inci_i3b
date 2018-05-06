@@ -35,13 +35,6 @@ public class SeeIncidenceListSteps {
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
 
-	  @Before
-	  public void setUp() throws Exception {
-	    driver = new FirefoxDriver();
-	    baseUrl = "https://www.katalon.com/";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	  }
-
 	  @When(value = "the user log in")
 	  public void testUntitledTestCasete() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
@@ -70,14 +63,6 @@ public class SeeIncidenceListSteps {
 		  utils.textoPresentePagina(driver, "title");
 		  utils.textoPresentePagina(driver, "Comments(from the operators)");		  
 	  }
-	  
-	  @After
-	  public void tearDown() throws Exception {
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
-	  }
+
 
 }
