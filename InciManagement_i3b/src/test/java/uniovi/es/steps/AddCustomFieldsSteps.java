@@ -54,7 +54,7 @@ public class AddCustomFieldsSteps {
 		  driver.findElement(By.id("value")).sendKeys("valueName");
 	  }
 
-	  @Then(value = "^click Add field")
+	  @Then(value = "^cccccccccccccccclick Add field")
 	  public void testUntitledTestCase3() throws Exception 
 	  {
 		  driver.findElement(By.id("addButton")).click();
