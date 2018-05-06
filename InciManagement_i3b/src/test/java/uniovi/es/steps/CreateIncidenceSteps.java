@@ -39,7 +39,7 @@ public class CreateIncidenceSteps {
 	  private StringBuffer verificationErrors = new StringBuffer();
 
 
-	  @When(value = "the user log in session")
+	  @When(value = "the user completes the log in")
 	  public void testUntitledTestCase() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
