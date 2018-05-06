@@ -35,7 +35,7 @@ public class SeeIncidenceListSteps {
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
 
-	  @When(value = "^the user does the log in")
+//	  @When(value = "^the user does the log in")
 	  public void testUntitledTestCasete() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
@@ -50,14 +50,14 @@ public class SeeIncidenceListSteps {
 		driver.findElement(By.xpath("//button[@type='submit']")).click();  
 	  }
 	  
-	  @Then(value = "^click the option of review my incidence")
+//	  @Then(value = "^click the option of review my incidence")
 	  public void testUntitledTestCase2() throws Exception 
 	  {
 		  utils.textoPresentePagina(driver, "Create new incident");
 		  driver.findElement(By.linkText("Review my incidents")).click();
 	  } 
 	  
-	  @Then(value = "^see the list of incidences")
+//	  @Then(value = "^see the list of incidences")
 	  public void testUntitledTestCase3() throws Exception 
 	  {
 		  utils.textoPresentePagina(driver, "title");
