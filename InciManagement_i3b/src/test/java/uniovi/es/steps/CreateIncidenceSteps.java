@@ -39,7 +39,7 @@ public class CreateIncidenceSteps {
 	  private StringBuffer verificationErrors = new StringBuffer();
 
 
-	  @When(value = "the user completes the log in")
+	  @When(value = "^the user completes the log in")
 	  public void testUntitledTestCase() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
@@ -54,7 +54,7 @@ public class CreateIncidenceSteps {
 		driver.findElement(By.xpath("//button[@type='submit']")).click();  
 	  }
 	  
-	  @Then(value = "fill the text fields and clicks Notify Incidence")
+	  @Then(value = "^fill the text fields and clicks Notify Incidence")
 	  public void testUntitledTestCase2() throws Exception 
 	  {
 		  driver.findElement(By.id("key")).click();
@@ -77,7 +77,7 @@ public class CreateIncidenceSteps {
 		    driver.findElement(By.xpath("//button[@type='submit']")).click();
 	  }
 
-	  @Then(value = "an incidence is created (and redirected to a list view of them)")
+	  @Then(value = "^an incidence is created (and redirected to a list view of them)")
 	  public void testUntitledTestCase3() throws Exception 
 	  {
 		  //esta en la pagina de lista

@@ -26,7 +26,7 @@ public class AddCustomFieldsSteps {
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
 
-	  @When(value = "the user logs in session")
+	  @When(value = "^the user logs in session")
 	  public void testUntitledTestCasee() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
@@ -41,7 +41,7 @@ public class AddCustomFieldsSteps {
 		driver.findElement(By.xpath("//button[@type='submit']")).click();  
 	  }
 	  
-	  @Then(value = "fill the form of a field")
+	  @Then(value = "^fill the form of a field")
 	  public void testUntitledTestCase2() throws Exception 
 	  {
 		//esta en la pagina de crearla
@@ -54,13 +54,13 @@ public class AddCustomFieldsSteps {
 		  driver.findElement(By.id("value")).sendKeys("valueName");
 	  }
 
-	  @Then(value = "click Add field")
+	  @Then(value = "^click Add field")
 	  public void testUntitledTestCase3() throws Exception 
 	  {
 		  driver.findElement(By.id("addButton")).click();
 	  }
 	  
-	  @Then(value = "see the info")
+	  @Then(value = "^see the info")
 	  public void testUntitledTestCase4() throws Exception 
 	  {
 		  //sale el nuevo campo
