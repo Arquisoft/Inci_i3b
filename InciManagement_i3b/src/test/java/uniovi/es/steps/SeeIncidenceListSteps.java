@@ -35,7 +35,7 @@ public class SeeIncidenceListSteps {
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
 
-	  @When(value = "the user log in")
+	  @When(value = "the user does the log in")
 	  public void testUntitledTestCasete() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
