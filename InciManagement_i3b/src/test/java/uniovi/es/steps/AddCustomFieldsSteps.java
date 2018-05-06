@@ -26,7 +26,7 @@ public class AddCustomFieldsSteps {
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
 
-	  @When(value = "^the user logs in session")
+	  @When(value = "^the user logs in")
 	  public void testUntitledTestCasee() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
