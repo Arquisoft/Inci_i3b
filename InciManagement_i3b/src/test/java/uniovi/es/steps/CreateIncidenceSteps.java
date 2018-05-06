@@ -39,8 +39,8 @@ public class CreateIncidenceSteps {
 	  private StringBuffer verificationErrors = new StringBuffer();
 
 
-//	  @When(value = "^the user completes the log in")
-	  public void testUntitledTestCase() throws Exception {
+//	  @When(value = "^the user completes the log in$")
+	  public void the_user_completes_the_log_in() throws Throwable {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
 		driver.findElement(By.name("login")).sendKeys("");
@@ -54,9 +54,8 @@ public class CreateIncidenceSteps {
 		driver.findElement(By.xpath("//button[@type='submit']")).click();  
 	  }
 	  
-//	  @Then(value = "^fill the text fields and clicks Notify Incidence")
-	  public void testUntitledTestCase2() throws Exception 
-	  {
+	 // @Then("^fill the text fields and clicks Notify Incidence$")
+	  public void fill_the_text_fields_and_clicks_Notify_Incidence() throws Throwable {
 		  driver.findElement(By.id("key")).click();
 		    driver.findElement(By.id("key")).clear();
 		    driver.findElement(By.id("key")).sendKeys("f1");
@@ -77,8 +76,8 @@ public class CreateIncidenceSteps {
 		    driver.findElement(By.xpath("//button[@type='submit']")).click();
 	  }
 
-//	  @Then(value = "^an incidence is created (and redirected to a list view of them)")
-	  public void testUntitledTestCase3() throws Exception 
+//	 @Then("^an incidence is created \\(and redirected to a list view of them\\)$")
+	  public void an_incidence_is_created_and_redirected_to_a_list_view_of_them() throws Throwable
 	  {
 		  //esta en la pagina de lista
 		  utils.textoPresentePagina(driver, "title");
