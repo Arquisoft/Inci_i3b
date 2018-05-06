@@ -145,5 +145,5 @@ class prueba01 extends Simulation {
 			.get(uri6 + "/fonts/glyphicons-halflings-regular.woff2")
 			.headers(headers_20)))
 
-	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
+	setUp(scn.inject(atOnceUsers(10))).protocols(httpProtocol)
 }
