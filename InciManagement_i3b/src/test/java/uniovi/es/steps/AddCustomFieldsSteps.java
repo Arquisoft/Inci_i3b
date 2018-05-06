@@ -31,7 +31,7 @@ public class AddCustomFieldsSteps {
 
 	  @When(value = "the user log in session")
 	  public void testUntitledTestCasee() throws Exception {
-		driver.get("http://localhost:8080/logIn");
+		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
 		driver.findElement(By.name("login")).sendKeys("");
 		driver.findElement(By.name("login")).click();
