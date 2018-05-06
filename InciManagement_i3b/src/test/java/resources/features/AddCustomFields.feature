@@ -1,5 +1,3 @@
- Language: en
-
 Feature:AddField
 
  Characteristic: the user could add custom fields 
