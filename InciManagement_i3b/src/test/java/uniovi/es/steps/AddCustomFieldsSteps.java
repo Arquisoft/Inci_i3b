@@ -39,7 +39,7 @@ public class AddCustomFieldsSteps {
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
-	  @When(value = "the user log in session")
+	  @When(value = "the user logs in session")
 	  public void testUntitledTestCasee() throws Exception {
 		driver.get("http://165.227.236.206:8080/");
 		driver.findElement(By.name("login")).clear();
