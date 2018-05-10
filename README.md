@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/Arquisoft/Inci_i3b.svg?branch=master)](https://travis-ci.org/Arquisoft/Inci_i3b)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/43af5c0e2a6745df932bd77d84a0103f)](https://www.codacy.com/app/jelabra/Inci_i3b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/Inci_i3b&amp;utm_campaign=Badge_Grade)
-[![codecov](https://codecov.io/gh/Arquisoft/Inci_i3b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Inci_i3b)
 
 This is the project implemented for the laboratory assignment of the course "Software Architecture". The course is part of the Degree in Software Engineering, School of Computer Science Engineering, University of Oviedo. The whole system is divided in four modules developed by two subteams ([Team A](https://github.com/orgs/Arquisoft/teams/course1718_i3b2) and [Team B](https://github.com/orgs/Arquisoft/teams/course1718_i3b1)). These modules are:
 
