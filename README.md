@@ -10,7 +10,10 @@ This is the project implemented for the laboratory assignment of the course "Sof
 * Common module.- [Inci_i3b](https://github.com/Arquisoft/Inci_i3b)
 
 # Inci_i3b
-In this repository you will find the fourth modules. 
+In this repository you will find the fourth modules. The followings are deployed in DIGITAL OCEAN:
+Agents:http://165.227.236.206:8085
+InciManagement:http://165.227.236.206:8080/listIncidences
+Dashboard:http://165.227.236.206:8090/index
 
 # Authors
 * [Jorge García Marín (UO245241)](https://github.com/JorgeGarciaMarin)
